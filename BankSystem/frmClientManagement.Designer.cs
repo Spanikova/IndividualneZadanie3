@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.cmdUpdate = new System.Windows.Forms.Button();
             this.cmdNewTransaction = new System.Windows.Forms.Button();
             this.cmdCloseAccount = new System.Windows.Forms.Button();
@@ -36,34 +35,27 @@
             this.cmdWithdrawal = new System.Windows.Forms.Button();
             this.cmdDeposit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.pnlAccountData = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblClientName = new System.Windows.Forms.Label();
+            this.lblClientAddress = new System.Windows.Forms.Label();
+            this.lblBirthNumber = new System.Windows.Forms.Label();
+            this.lblClientBirthNumber = new System.Windows.Forms.Label();
+            this.lblIdCard = new System.Windows.Forms.Label();
+            this.lblClientIdCard = new System.Windows.Forms.Label();
+            this.lblPhoneNum = new System.Windows.Forms.Label();
+            this.lblClientPhoneNumber = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblClientEmail = new System.Windows.Forms.Label();
+            this.pnlAccountData.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Cyan;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(975, 175);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Niekde v tomto okne budú stručné NEEDITOVATEĽNÉ informácie o účte, klientovi, akt" +
-    "uálnom zostatku na účte a povolenom prečerpaní.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmdUpdate
             // 
-            this.cmdUpdate.Location = new System.Drawing.Point(16, 211);
-            this.cmdUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdUpdate.Location = new System.Drawing.Point(13, 242);
             this.cmdUpdate.Name = "cmdUpdate";
-            this.cmdUpdate.Size = new System.Drawing.Size(149, 28);
+            this.cmdUpdate.Size = new System.Drawing.Size(112, 23);
             this.cmdUpdate.TabIndex = 4;
             this.cmdUpdate.Text = "Update info";
             this.cmdUpdate.UseVisualStyleBackColor = true;
@@ -71,10 +63,9 @@
             // 
             // cmdNewTransaction
             // 
-            this.cmdNewTransaction.Location = new System.Drawing.Point(523, 315);
-            this.cmdNewTransaction.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdNewTransaction.Location = new System.Drawing.Point(392, 291);
             this.cmdNewTransaction.Name = "cmdNewTransaction";
-            this.cmdNewTransaction.Size = new System.Drawing.Size(149, 28);
+            this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
             this.cmdNewTransaction.TabIndex = 5;
             this.cmdNewTransaction.Text = "New transaction";
             this.cmdNewTransaction.UseVisualStyleBackColor = true;
@@ -82,10 +73,9 @@
             // 
             // cmdCloseAccount
             // 
-            this.cmdCloseAccount.Location = new System.Drawing.Point(523, 423);
-            this.cmdCloseAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdCloseAccount.Location = new System.Drawing.Point(392, 344);
             this.cmdCloseAccount.Name = "cmdCloseAccount";
-            this.cmdCloseAccount.Size = new System.Drawing.Size(149, 28);
+            this.cmdCloseAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdCloseAccount.TabIndex = 6;
             this.cmdCloseAccount.Text = "Close account";
             this.cmdCloseAccount.UseVisualStyleBackColor = true;
@@ -93,10 +83,9 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(523, 211);
-            this.cmdAllTransactions.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(392, 242);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
-            this.cmdAllTransactions.Size = new System.Drawing.Size(149, 28);
+            this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
             this.cmdAllTransactions.Text = "All transactions";
             this.cmdAllTransactions.UseVisualStyleBackColor = true;
@@ -104,10 +93,9 @@
             // 
             // cmdWithdrawal
             // 
-            this.cmdWithdrawal.Location = new System.Drawing.Point(16, 423);
-            this.cmdWithdrawal.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdWithdrawal.Location = new System.Drawing.Point(12, 344);
             this.cmdWithdrawal.Name = "cmdWithdrawal";
-            this.cmdWithdrawal.Size = new System.Drawing.Size(149, 28);
+            this.cmdWithdrawal.Size = new System.Drawing.Size(112, 23);
             this.cmdWithdrawal.TabIndex = 9;
             this.cmdWithdrawal.Text = "Withdrawal";
             this.cmdWithdrawal.UseVisualStyleBackColor = true;
@@ -115,10 +103,9 @@
             // 
             // cmdDeposit
             // 
-            this.cmdDeposit.Location = new System.Drawing.Point(16, 315);
-            this.cmdDeposit.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdDeposit.Location = new System.Drawing.Point(13, 291);
             this.cmdDeposit.Name = "cmdDeposit";
-            this.cmdDeposit.Size = new System.Drawing.Size(149, 28);
+            this.cmdDeposit.Size = new System.Drawing.Size(112, 23);
             this.cmdDeposit.TabIndex = 10;
             this.cmdDeposit.Text = "Deposit";
             this.cmdDeposit.UseVisualStyleBackColor = true;
@@ -129,97 +116,148 @@
             this.label2.BackColor = System.Drawing.Color.DarkMagenta;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(999, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(749, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(253, 478);
+            this.label2.Size = new System.Drawing.Size(190, 389);
             this.label2.TabIndex = 11;
             this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // pnlAccountData
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label3.Location = new System.Drawing.Point(170, 201);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(311, 74);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "< Odklik na úpravu údajov o účte/klientovi";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnlAccountData.BackColor = System.Drawing.Color.Silver;
+            this.pnlAccountData.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlAccountData.Controls.Add(this.lblClientEmail);
+            this.pnlAccountData.Controls.Add(this.lblEmail);
+            this.pnlAccountData.Controls.Add(this.lblClientPhoneNumber);
+            this.pnlAccountData.Controls.Add(this.lblPhoneNum);
+            this.pnlAccountData.Controls.Add(this.lblClientIdCard);
+            this.pnlAccountData.Controls.Add(this.lblIdCard);
+            this.pnlAccountData.Controls.Add(this.lblClientBirthNumber);
+            this.pnlAccountData.Controls.Add(this.lblBirthNumber);
+            this.pnlAccountData.Controls.Add(this.lblClientAddress);
+            this.pnlAccountData.Controls.Add(this.lblClientName);
+            this.pnlAccountData.Controls.Add(this.lblAddress);
+            this.pnlAccountData.Controls.Add(this.lblName);
+            this.pnlAccountData.Location = new System.Drawing.Point(13, 13);
+            this.pnlAccountData.Name = "pnlAccountData";
+            this.pnlAccountData.Size = new System.Drawing.Size(730, 191);
+            this.pnlAccountData.TabIndex = 18;
             // 
-            // label4
+            // lblName
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(680, 415);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(311, 74);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "< Odklik na zatvorenie účtu";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(17, 15);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(41, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name: ";
             // 
-            // label5
+            // lblAddress
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.Olive;
-            this.label5.Location = new System.Drawing.Point(170, 306);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(311, 74);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "< Odklik na vloženie peňazí na účet";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(17, 100);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(51, 13);
+            this.lblAddress.TabIndex = 1;
+            this.lblAddress.Text = "Address: ";
             // 
-            // label6
+            // lblClientName
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(173, 415);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(311, 74);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "< Odklik na výber peňazí z účtu";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblClientName.AutoSize = true;
+            this.lblClientName.Location = new System.Drawing.Point(104, 15);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(35, 13);
+            this.lblClientName.TabIndex = 2;
+            this.lblClientName.Text = "Name";
             // 
-            // label7
+            // lblClientAddress
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label7.Location = new System.Drawing.Point(680, 201);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(311, 74);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "< Odklik na zobrazenie transakcií na účte";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblClientAddress.AutoSize = true;
+            this.lblClientAddress.Location = new System.Drawing.Point(104, 100);
+            this.lblClientAddress.Name = "lblClientAddress";
+            this.lblClientAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblClientAddress.TabIndex = 3;
+            this.lblClientAddress.Text = "Address";
             // 
-            // label8
+            // lblBirthNumber
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(680, 306);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(311, 74);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "< Odklik na zadanie novej transakcie";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBirthNumber.AutoSize = true;
+            this.lblBirthNumber.Location = new System.Drawing.Point(17, 41);
+            this.lblBirthNumber.Name = "lblBirthNumber";
+            this.lblBirthNumber.Size = new System.Drawing.Size(69, 13);
+            this.lblBirthNumber.TabIndex = 4;
+            this.lblBirthNumber.Text = "Birth number:";
+            // 
+            // lblClientBirthNumber
+            // 
+            this.lblClientBirthNumber.AutoSize = true;
+            this.lblClientBirthNumber.Location = new System.Drawing.Point(104, 41);
+            this.lblClientBirthNumber.Name = "lblClientBirthNumber";
+            this.lblClientBirthNumber.Size = new System.Drawing.Size(66, 13);
+            this.lblClientBirthNumber.TabIndex = 5;
+            this.lblClientBirthNumber.Text = "Birth number";
+            // 
+            // lblIdCard
+            // 
+            this.lblIdCard.AutoSize = true;
+            this.lblIdCard.Location = new System.Drawing.Point(17, 69);
+            this.lblIdCard.Name = "lblIdCard";
+            this.lblIdCard.Size = new System.Drawing.Size(43, 13);
+            this.lblIdCard.TabIndex = 6;
+            this.lblIdCard.Text = "Id card:";
+            // 
+            // lblClientIdCard
+            // 
+            this.lblClientIdCard.AutoSize = true;
+            this.lblClientIdCard.Location = new System.Drawing.Point(104, 69);
+            this.lblClientIdCard.Name = "lblClientIdCard";
+            this.lblClientIdCard.Size = new System.Drawing.Size(40, 13);
+            this.lblClientIdCard.TabIndex = 7;
+            this.lblClientIdCard.Text = "Id card";
+            // 
+            // lblPhoneNum
+            // 
+            this.lblPhoneNum.AutoSize = true;
+            this.lblPhoneNum.Location = new System.Drawing.Point(17, 128);
+            this.lblPhoneNum.Name = "lblPhoneNum";
+            this.lblPhoneNum.Size = new System.Drawing.Size(82, 13);
+            this.lblPhoneNum.TabIndex = 8;
+            this.lblPhoneNum.Text = "Phone number: ";
+            // 
+            // lblClientPhoneNumber
+            // 
+            this.lblClientPhoneNumber.AutoSize = true;
+            this.lblClientPhoneNumber.Location = new System.Drawing.Point(104, 128);
+            this.lblClientPhoneNumber.Name = "lblClientPhoneNumber";
+            this.lblClientPhoneNumber.Size = new System.Drawing.Size(76, 13);
+            this.lblClientPhoneNumber.TabIndex = 9;
+            this.lblClientPhoneNumber.Text = "Phone number";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(17, 157);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(38, 13);
+            this.lblEmail.TabIndex = 10;
+            this.lblEmail.Text = "E-mail:";
+            // 
+            // lblClientEmail
+            // 
+            this.lblClientEmail.AutoSize = true;
+            this.lblClientEmail.Location = new System.Drawing.Point(104, 157);
+            this.lblClientEmail.Name = "lblClientEmail";
+            this.lblClientEmail.Size = new System.Drawing.Size(34, 13);
+            this.lblClientEmail.TabIndex = 11;
+            this.lblClientEmail.Text = "e-mail";
             // 
             // frmClientManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 505);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(949, 410);
+            this.Controls.Add(this.pnlAccountData);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmdDeposit);
             this.Controls.Add(this.cmdWithdrawal);
@@ -227,18 +265,17 @@
             this.Controls.Add(this.cmdCloseAccount);
             this.Controls.Add(this.cmdNewTransaction);
             this.Controls.Add(this.cmdUpdate);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmClientManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmClientManagement";
+            this.Load += new System.EventHandler(this.frmClientManagement_Load);
+            this.pnlAccountData.ResumeLayout(false);
+            this.pnlAccountData.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdUpdate;
         private System.Windows.Forms.Button cmdNewTransaction;
         private System.Windows.Forms.Button cmdCloseAccount;
@@ -246,11 +283,18 @@
         private System.Windows.Forms.Button cmdWithdrawal;
         private System.Windows.Forms.Button cmdDeposit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel pnlAccountData;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblClientName;
+        private System.Windows.Forms.Label lblClientAddress;
+        private System.Windows.Forms.Label lblClientBirthNumber;
+        private System.Windows.Forms.Label lblBirthNumber;
+        private System.Windows.Forms.Label lblClientIdCard;
+        private System.Windows.Forms.Label lblIdCard;
+        private System.Windows.Forms.Label lblClientEmail;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblClientPhoneNumber;
+        private System.Windows.Forms.Label lblPhoneNum;
     }
 }

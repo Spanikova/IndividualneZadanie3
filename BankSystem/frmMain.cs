@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
+        private ClientRepository ClientRepository = new ClientRepository();
+
         public frmMain()
         {
             InitializeComponent();
@@ -19,10 +22,21 @@ namespace BankSystem
 
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
-            using (frmClientManagement newForm = new frmClientManagement())
+            lblClientNotExists.Visible = false;
+            string text = txtFindClient.Text;
+            int clientId = ClientRepository.FindClientIdByText(text);
+            if (clientId > 0)
             {
-                newForm.ShowDialog();
+                using (frmClientManagement newForm = new frmClientManagement(clientId))
+                {
+                    newForm.ShowDialog();
+                }
             }
+            else
+            {
+                lblClientNotExists.Visible = true;
+            }
+           
         }
 
         private void cmdNewAccount_Click(object sender, EventArgs e)

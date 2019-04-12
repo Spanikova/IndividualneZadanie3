@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace BankSystem
 {
     public partial class frmClientManagement : Form
     {
+        private ClientRepository _clientRepository = new ClientRepository();
+        private int _clientId = 0;
 
         /// <summary>
         /// Backup, do not really use :)
@@ -25,6 +28,7 @@ namespace BankSystem
         public frmClientManagement(int clientId)
         {
             InitializeComponent();
+            _clientId = clientId;
         }
 
         private void cmdUpdate_Click(object sender, EventArgs e)
@@ -74,5 +78,19 @@ namespace BankSystem
                 DialogResult = DialogResult.OK;
             }
         }
+
+        private void frmClientManagement_Load(object sender, EventArgs e)
+        {
+            _clientRepository.FindClientById(_clientId);
+            lblClientName.Text = $"{_clientRepository.Client.Title + " " + _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
+            lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber}";
+            lblClientIdCard.Text = $"{_clientRepository.Client.IdCardNumber}";
+            lblClientAddress.Text = $@"{_clientRepository.Client.Street + " " + _clientRepository.Client.StreetNumber + ", " + 
+                _clientRepository.Client.PostalCode + ", " + _clientRepository.Client.City}";
+            lblClientPhoneNumber.Text = $"{_clientRepository.Client.PhoneNumber}";
+            lblClientEmail.Text = $"{_clientRepository.Client.EmailAddress}";
+        }
     }
 }
+
+
