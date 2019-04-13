@@ -35,6 +35,8 @@
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.txtFindClient = new System.Windows.Forms.TextBox();
             this.lblInfoText = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -109,11 +111,22 @@
             this.lblInfoText.Text = "Info text";
             this.lblInfoText.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::BankSystem.Properties.Resources.bank_islam;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(273, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(197, 59);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 361);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblInfoText);
             this.Controls.Add(this.txtFindClient);
             this.Controls.Add(this.cmdAllTransactions);
@@ -124,8 +137,9 @@
             this.Location = new System.Drawing.Point(600, 200);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Bank System";
+            this.Text = "BANK ISLAM - Bankový systém";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +154,7 @@
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.TextBox txtFindClient;
         private System.Windows.Forms.Label lblInfoText;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

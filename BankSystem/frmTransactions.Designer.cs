@@ -51,7 +51,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTransactions";
+            this.Text = "Prehľad transakcií";
             this.ResumeLayout(false);
 
         }

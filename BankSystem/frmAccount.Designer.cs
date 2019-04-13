@@ -37,10 +37,9 @@
             this.label1.BackColor = System.Drawing.Color.DarkSalmon;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(16, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 301);
+            this.label1.Size = new System.Drawing.Size(297, 245);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tu budú informácie o konkrétnom účte.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -50,25 +49,23 @@
             this.label2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(419, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(314, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(373, 301);
+            this.label2.Size = new System.Drawing.Size(280, 245);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tu budú informácie o konkrétnom klientovi.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 321);
+            this.ClientSize = new System.Drawing.Size(604, 261);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmAccount";
+            this.Text = "Údaje o klientovi a účte";
             this.ResumeLayout(false);
 
         }

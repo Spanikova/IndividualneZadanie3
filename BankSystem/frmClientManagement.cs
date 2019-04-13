@@ -85,8 +85,14 @@ namespace BankSystem
             lblClientName.Text = $"{_clientRepository.Client.Title + " " + _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
             lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber}";
             lblClientIdCard.Text = $"{_clientRepository.Client.IdCardNumber}";
-            lblClientAddress.Text = $@"{_clientRepository.Client.Street + ", " +  _clientRepository.Client.City}";
+            lblClientStreet.Text = $@"{_clientRepository.Client.Street}";
+            lblClientCity.Text = $"{_clientRepository.Client.City}";
             lblClientPhoneNumber.Text = $"{_clientRepository.Client.PhoneNumber}";
+            lblAccIban.Text = $"{_clientRepository.Client.BankAccount.IBAN}";
+            lblAccName.Text = $"{_clientRepository.Client.BankAccount.AccountName}";
+            lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
+            lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
+            lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.Date.ToShortDateString()}";
         }
     }
 }

@@ -39,10 +39,10 @@ namespace BankSystem
             }
             else if (clientId == -1)
             {
-                lblInfoText.Text = _clientRepository.NoDbConnection;
+                lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
                 lblInfoText.Visible = true;
             }
-           
+            txtFindClient.Text = "";
         }
 
         private void cmdNewAccount_Click(object sender, EventArgs e)

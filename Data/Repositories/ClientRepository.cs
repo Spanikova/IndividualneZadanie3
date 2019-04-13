@@ -55,7 +55,7 @@ namespace Data.Repositories
                 connection.Open();
                 string sqlQuery = @"SELECT C.ClientID, C.Name, C.Surname, C.Title, c.BirthNumber, C.IdCardNumber, C.Street,
                                     C.City, C.PhoneNumber, A.AccountID, A.AccountName, A.IBAN, A.OpeningDate, 
-                                    A.AccountBalance, A.AuthOverdraftLimit 
+                                    A.AccountBalance, A.AuthOverdraftLimit, A.OpeningDate
                                     FROM Clients AS C 
                                     INNER JOIN BankAccounts AS A ON C.ClientID = A.ClientID
                                     WHERE C.ClientID = @id;";
@@ -80,6 +80,7 @@ namespace Data.Repositories
                         Client.BankAccount.OpeningDate = reader.GetDateTime(12);
                         Client.BankAccount.AccountBalance = reader.GetDecimal(13);
                         Client.BankAccount.AuthOverdraftLimit = reader.GetDecimal(14);
+                        Client.BankAccount.OpeningDate = reader.GetDateTime(15);
                     }
                 }
                 return Client;
