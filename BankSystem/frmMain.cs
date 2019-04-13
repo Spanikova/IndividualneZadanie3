@@ -43,6 +43,7 @@ namespace BankSystem
         {
             using (frmAccount newForm = new frmAccount())
             {
+
                 newForm.ShowDialog();
             }
         }
@@ -61,6 +62,11 @@ namespace BankSystem
             {
                 newForm.ShowDialog();
             }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

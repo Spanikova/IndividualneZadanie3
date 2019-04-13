@@ -55,7 +55,7 @@
             this.cmdFindClient.Name = "cmdFindClient";
             this.cmdFindClient.Size = new System.Drawing.Size(112, 29);
             this.cmdFindClient.TabIndex = 2;
-            this.cmdFindClient.Text = "Find client";
+            this.cmdFindClient.Text = "Hľadať klienta";
             this.cmdFindClient.UseVisualStyleBackColor = true;
             this.cmdFindClient.Click += new System.EventHandler(this.cmdFindClient_Click);
             // 
@@ -65,7 +65,7 @@
             this.cmdNewAccount.Name = "cmdNewAccount";
             this.cmdNewAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdNewAccount.TabIndex = 3;
-            this.cmdNewAccount.Text = "New account";
+            this.cmdNewAccount.Text = "Nový účet";
             this.cmdNewAccount.UseVisualStyleBackColor = true;
             this.cmdNewAccount.Click += new System.EventHandler(this.cmdNewAccount_Click);
             // 
@@ -75,7 +75,7 @@
             this.cmdAllAccounts.Name = "cmdAllAccounts";
             this.cmdAllAccounts.Size = new System.Drawing.Size(112, 23);
             this.cmdAllAccounts.TabIndex = 4;
-            this.cmdAllAccounts.Text = "All accounts";
+            this.cmdAllAccounts.Text = "Prehľad účtov";
             this.cmdAllAccounts.UseVisualStyleBackColor = true;
             this.cmdAllAccounts.Click += new System.EventHandler(this.cmdAllAccounts_Click);
             // 
@@ -85,7 +85,7 @@
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 5;
-            this.cmdAllTransactions.Text = "All transactions";
+            this.cmdAllTransactions.Text = "Prehľad transakcií";
             this.cmdAllTransactions.UseVisualStyleBackColor = true;
             this.cmdAllTransactions.Click += new System.EventHandler(this.cmdAllTransactions_Click);
             // 
@@ -125,6 +125,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Bank System";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

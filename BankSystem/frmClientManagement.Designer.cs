@@ -36,18 +36,16 @@
             this.cmdDeposit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAccountData = new System.Windows.Forms.Panel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblClientName = new System.Windows.Forms.Label();
-            this.lblClientAddress = new System.Windows.Forms.Label();
-            this.lblBirthNumber = new System.Windows.Forms.Label();
-            this.lblClientBirthNumber = new System.Windows.Forms.Label();
-            this.lblIdCard = new System.Windows.Forms.Label();
-            this.lblClientIdCard = new System.Windows.Forms.Label();
-            this.lblPhoneNum = new System.Windows.Forms.Label();
             this.lblClientPhoneNumber = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblClientEmail = new System.Windows.Forms.Label();
+            this.lblPhoneNum = new System.Windows.Forms.Label();
+            this.lblClientIdCard = new System.Windows.Forms.Label();
+            this.lblIdCard = new System.Windows.Forms.Label();
+            this.lblClientBirthNumber = new System.Windows.Forms.Label();
+            this.lblBirthNumber = new System.Windows.Forms.Label();
+            this.lblClientAddress = new System.Windows.Forms.Label();
+            this.lblClientName = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.pnlAccountData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +55,7 @@
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(112, 23);
             this.cmdUpdate.TabIndex = 4;
-            this.cmdUpdate.Text = "Update info";
+            this.cmdUpdate.Text = "Aktualizovať údaje";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
             // 
@@ -67,7 +65,7 @@
             this.cmdNewTransaction.Name = "cmdNewTransaction";
             this.cmdNewTransaction.Size = new System.Drawing.Size(112, 23);
             this.cmdNewTransaction.TabIndex = 5;
-            this.cmdNewTransaction.Text = "New transaction";
+            this.cmdNewTransaction.Text = "Nová transakcia";
             this.cmdNewTransaction.UseVisualStyleBackColor = true;
             this.cmdNewTransaction.Click += new System.EventHandler(this.cmdNewTransaction_Click);
             // 
@@ -77,7 +75,7 @@
             this.cmdCloseAccount.Name = "cmdCloseAccount";
             this.cmdCloseAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdCloseAccount.TabIndex = 6;
-            this.cmdCloseAccount.Text = "Close account";
+            this.cmdCloseAccount.Text = "Zatvoriť účet";
             this.cmdCloseAccount.UseVisualStyleBackColor = true;
             this.cmdCloseAccount.Click += new System.EventHandler(this.cmdCloseAccount_Click);
             // 
@@ -87,7 +85,7 @@
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 8;
-            this.cmdAllTransactions.Text = "All transactions";
+            this.cmdAllTransactions.Text = "Všetky transakcie";
             this.cmdAllTransactions.UseVisualStyleBackColor = true;
             this.cmdAllTransactions.Click += new System.EventHandler(this.cmdAllTransactions_Click);
             // 
@@ -97,7 +95,7 @@
             this.cmdWithdrawal.Name = "cmdWithdrawal";
             this.cmdWithdrawal.Size = new System.Drawing.Size(112, 23);
             this.cmdWithdrawal.TabIndex = 9;
-            this.cmdWithdrawal.Text = "Withdrawal";
+            this.cmdWithdrawal.Text = "Výber";
             this.cmdWithdrawal.UseVisualStyleBackColor = true;
             this.cmdWithdrawal.Click += new System.EventHandler(this.cmdWithdrawal_Click);
             // 
@@ -107,7 +105,7 @@
             this.cmdDeposit.Name = "cmdDeposit";
             this.cmdDeposit.Size = new System.Drawing.Size(112, 23);
             this.cmdDeposit.TabIndex = 10;
-            this.cmdDeposit.Text = "Deposit";
+            this.cmdDeposit.Text = "Vklad";
             this.cmdDeposit.UseVisualStyleBackColor = true;
             this.cmdDeposit.Click += new System.EventHandler(this.cmdDeposit_Click);
             // 
@@ -127,8 +125,6 @@
             // 
             this.pnlAccountData.BackColor = System.Drawing.Color.Silver;
             this.pnlAccountData.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlAccountData.Controls.Add(this.lblClientEmail);
-            this.pnlAccountData.Controls.Add(this.lblEmail);
             this.pnlAccountData.Controls.Add(this.lblClientPhoneNumber);
             this.pnlAccountData.Controls.Add(this.lblPhoneNum);
             this.pnlAccountData.Controls.Add(this.lblClientIdCard);
@@ -141,71 +137,26 @@
             this.pnlAccountData.Controls.Add(this.lblName);
             this.pnlAccountData.Location = new System.Drawing.Point(13, 13);
             this.pnlAccountData.Name = "pnlAccountData";
-            this.pnlAccountData.Size = new System.Drawing.Size(730, 191);
+            this.pnlAccountData.Size = new System.Drawing.Size(305, 168);
             this.pnlAccountData.TabIndex = 18;
             // 
-            // lblName
+            // lblClientPhoneNumber
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(17, 15);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name: ";
+            this.lblClientPhoneNumber.AutoSize = true;
+            this.lblClientPhoneNumber.Location = new System.Drawing.Point(104, 122);
+            this.lblClientPhoneNumber.Name = "lblClientPhoneNumber";
+            this.lblClientPhoneNumber.Size = new System.Drawing.Size(76, 13);
+            this.lblClientPhoneNumber.TabIndex = 9;
+            this.lblClientPhoneNumber.Text = "Phone number";
             // 
-            // lblAddress
+            // lblPhoneNum
             // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(17, 100);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(51, 13);
-            this.lblAddress.TabIndex = 1;
-            this.lblAddress.Text = "Address: ";
-            // 
-            // lblClientName
-            // 
-            this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(104, 15);
-            this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(35, 13);
-            this.lblClientName.TabIndex = 2;
-            this.lblClientName.Text = "Name";
-            // 
-            // lblClientAddress
-            // 
-            this.lblClientAddress.AutoSize = true;
-            this.lblClientAddress.Location = new System.Drawing.Point(104, 100);
-            this.lblClientAddress.Name = "lblClientAddress";
-            this.lblClientAddress.Size = new System.Drawing.Size(45, 13);
-            this.lblClientAddress.TabIndex = 3;
-            this.lblClientAddress.Text = "Address";
-            // 
-            // lblBirthNumber
-            // 
-            this.lblBirthNumber.AutoSize = true;
-            this.lblBirthNumber.Location = new System.Drawing.Point(17, 41);
-            this.lblBirthNumber.Name = "lblBirthNumber";
-            this.lblBirthNumber.Size = new System.Drawing.Size(69, 13);
-            this.lblBirthNumber.TabIndex = 4;
-            this.lblBirthNumber.Text = "Birth number:";
-            // 
-            // lblClientBirthNumber
-            // 
-            this.lblClientBirthNumber.AutoSize = true;
-            this.lblClientBirthNumber.Location = new System.Drawing.Point(104, 41);
-            this.lblClientBirthNumber.Name = "lblClientBirthNumber";
-            this.lblClientBirthNumber.Size = new System.Drawing.Size(66, 13);
-            this.lblClientBirthNumber.TabIndex = 5;
-            this.lblClientBirthNumber.Text = "Birth number";
-            // 
-            // lblIdCard
-            // 
-            this.lblIdCard.AutoSize = true;
-            this.lblIdCard.Location = new System.Drawing.Point(17, 69);
-            this.lblIdCard.Name = "lblIdCard";
-            this.lblIdCard.Size = new System.Drawing.Size(43, 13);
-            this.lblIdCard.TabIndex = 6;
-            this.lblIdCard.Text = "Id card:";
+            this.lblPhoneNum.AutoSize = true;
+            this.lblPhoneNum.Location = new System.Drawing.Point(17, 122);
+            this.lblPhoneNum.Name = "lblPhoneNum";
+            this.lblPhoneNum.Size = new System.Drawing.Size(57, 13);
+            this.lblPhoneNum.TabIndex = 8;
+            this.lblPhoneNum.Text = "Tel. číslo: ";
             // 
             // lblClientIdCard
             // 
@@ -216,41 +167,68 @@
             this.lblClientIdCard.TabIndex = 7;
             this.lblClientIdCard.Text = "Id card";
             // 
-            // lblPhoneNum
+            // lblIdCard
             // 
-            this.lblPhoneNum.AutoSize = true;
-            this.lblPhoneNum.Location = new System.Drawing.Point(17, 128);
-            this.lblPhoneNum.Name = "lblPhoneNum";
-            this.lblPhoneNum.Size = new System.Drawing.Size(82, 13);
-            this.lblPhoneNum.TabIndex = 8;
-            this.lblPhoneNum.Text = "Phone number: ";
+            this.lblIdCard.AutoSize = true;
+            this.lblIdCard.Location = new System.Drawing.Point(17, 69);
+            this.lblIdCard.Name = "lblIdCard";
+            this.lblIdCard.Size = new System.Drawing.Size(49, 13);
+            this.lblIdCard.TabIndex = 6;
+            this.lblIdCard.Text = "Číslo OP";
             // 
-            // lblClientPhoneNumber
+            // lblClientBirthNumber
             // 
-            this.lblClientPhoneNumber.AutoSize = true;
-            this.lblClientPhoneNumber.Location = new System.Drawing.Point(104, 128);
-            this.lblClientPhoneNumber.Name = "lblClientPhoneNumber";
-            this.lblClientPhoneNumber.Size = new System.Drawing.Size(76, 13);
-            this.lblClientPhoneNumber.TabIndex = 9;
-            this.lblClientPhoneNumber.Text = "Phone number";
+            this.lblClientBirthNumber.AutoSize = true;
+            this.lblClientBirthNumber.Location = new System.Drawing.Point(104, 41);
+            this.lblClientBirthNumber.Name = "lblClientBirthNumber";
+            this.lblClientBirthNumber.Size = new System.Drawing.Size(66, 13);
+            this.lblClientBirthNumber.TabIndex = 5;
+            this.lblClientBirthNumber.Text = "Birth number";
             // 
-            // lblEmail
+            // lblBirthNumber
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(17, 157);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(38, 13);
-            this.lblEmail.TabIndex = 10;
-            this.lblEmail.Text = "E-mail:";
+            this.lblBirthNumber.AutoSize = true;
+            this.lblBirthNumber.Location = new System.Drawing.Point(17, 41);
+            this.lblBirthNumber.Name = "lblBirthNumber";
+            this.lblBirthNumber.Size = new System.Drawing.Size(68, 13);
+            this.lblBirthNumber.TabIndex = 4;
+            this.lblBirthNumber.Text = "Rodné číslo:";
             // 
-            // lblClientEmail
+            // lblClientAddress
             // 
-            this.lblClientEmail.AutoSize = true;
-            this.lblClientEmail.Location = new System.Drawing.Point(104, 157);
-            this.lblClientEmail.Name = "lblClientEmail";
-            this.lblClientEmail.Size = new System.Drawing.Size(34, 13);
-            this.lblClientEmail.TabIndex = 11;
-            this.lblClientEmail.Text = "e-mail";
+            this.lblClientAddress.AutoSize = true;
+            this.lblClientAddress.Location = new System.Drawing.Point(104, 95);
+            this.lblClientAddress.Name = "lblClientAddress";
+            this.lblClientAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblClientAddress.TabIndex = 3;
+            this.lblClientAddress.Text = "Address";
+            // 
+            // lblClientName
+            // 
+            this.lblClientName.AutoSize = true;
+            this.lblClientName.Location = new System.Drawing.Point(104, 15);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(35, 13);
+            this.lblClientName.TabIndex = 2;
+            this.lblClientName.Text = "Name";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(17, 95);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(43, 13);
+            this.lblAddress.TabIndex = 1;
+            this.lblAddress.Text = "Adresa:";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(17, 15);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(37, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Meno:";
             // 
             // frmClientManagement
             // 
@@ -292,8 +270,6 @@
         private System.Windows.Forms.Label lblBirthNumber;
         private System.Windows.Forms.Label lblClientIdCard;
         private System.Windows.Forms.Label lblIdCard;
-        private System.Windows.Forms.Label lblClientEmail;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblClientPhoneNumber;
         private System.Windows.Forms.Label lblPhoneNum;
     }

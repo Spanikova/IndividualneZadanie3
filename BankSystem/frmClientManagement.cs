@@ -85,10 +85,8 @@ namespace BankSystem
             lblClientName.Text = $"{_clientRepository.Client.Title + " " + _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
             lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber}";
             lblClientIdCard.Text = $"{_clientRepository.Client.IdCardNumber}";
-            lblClientAddress.Text = $@"{_clientRepository.Client.Street + " " + _clientRepository.Client.StreetNumber + ", " + 
-                _clientRepository.Client.PostalCode + ", " + _clientRepository.Client.City}";
+            lblClientAddress.Text = $@"{_clientRepository.Client.Street + ", " +  _clientRepository.Client.City}";
             lblClientPhoneNumber.Text = $"{_clientRepository.Client.PhoneNumber}";
-            lblClientEmail.Text = $"{_clientRepository.Client.EmailAddress}";
         }
     }
 }
