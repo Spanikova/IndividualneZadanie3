@@ -30,10 +30,10 @@ namespace Data.Repositories
                                    WHERE C.IdCardNumber = @text OR A.IBAN = @text OR C.Surname = @text AND A.ClosingDate IS NULL";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@text", SqlDbType.NVarChar).Value = text;
-                var value = command.ExecuteScalar();
-                if (value != null)
+                object queryResult = command.ExecuteScalar();
+                if (queryResult != null)
                 {
-                    return (int)value;
+                    return (int)queryResult;
                 }
                 else
                 {
