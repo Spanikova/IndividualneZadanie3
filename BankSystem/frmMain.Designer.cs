@@ -34,7 +34,7 @@
             this.cmdAllAccounts = new System.Windows.Forms.Button();
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.txtFindClient = new System.Windows.Forms.TextBox();
-            this.lblClientNotExists = new System.Windows.Forms.Label();
+            this.lblInfoText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +61,7 @@
             // 
             // cmdNewAccount
             // 
-            this.cmdNewAccount.Location = new System.Drawing.Point(273, 177);
+            this.cmdNewAccount.Location = new System.Drawing.Point(273, 202);
             this.cmdNewAccount.Name = "cmdNewAccount";
             this.cmdNewAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdNewAccount.TabIndex = 3;
@@ -71,7 +71,7 @@
             // 
             // cmdAllAccounts
             // 
-            this.cmdAllAccounts.Location = new System.Drawing.Point(273, 238);
+            this.cmdAllAccounts.Location = new System.Drawing.Point(273, 249);
             this.cmdAllAccounts.Name = "cmdAllAccounts";
             this.cmdAllAccounts.Size = new System.Drawing.Size(112, 23);
             this.cmdAllAccounts.TabIndex = 4;
@@ -97,24 +97,24 @@
             this.txtFindClient.Size = new System.Drawing.Size(235, 20);
             this.txtFindClient.TabIndex = 10;
             // 
-            // lblClientNotExists
+            // lblInfoText
             // 
-            this.lblClientNotExists.AutoSize = true;
-            this.lblClientNotExists.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblClientNotExists.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblClientNotExists.Location = new System.Drawing.Point(312, 142);
-            this.lblClientNotExists.Name = "lblClientNotExists";
-            this.lblClientNotExists.Size = new System.Drawing.Size(263, 20);
-            this.lblClientNotExists.TabIndex = 11;
-            this.lblClientNotExists.Text = "Klient nebol nájdený v databáze";
-            this.lblClientNotExists.Visible = false;
+            this.lblInfoText.AutoSize = true;
+            this.lblInfoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblInfoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInfoText.Location = new System.Drawing.Point(312, 142);
+            this.lblInfoText.Name = "lblInfoText";
+            this.lblInfoText.Size = new System.Drawing.Size(76, 20);
+            this.lblInfoText.TabIndex = 11;
+            this.lblInfoText.Text = "Info text";
+            this.lblInfoText.Visible = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 361);
-            this.Controls.Add(this.lblClientNotExists);
+            this.Controls.Add(this.lblInfoText);
             this.Controls.Add(this.txtFindClient);
             this.Controls.Add(this.cmdAllTransactions);
             this.Controls.Add(this.cmdAllAccounts);
@@ -139,7 +139,7 @@
         private System.Windows.Forms.Button cmdAllAccounts;
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.TextBox txtFindClient;
-        private System.Windows.Forms.Label lblClientNotExists;
+        private System.Windows.Forms.Label lblInfoText;
     }
 }
 

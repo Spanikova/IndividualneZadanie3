@@ -13,7 +13,7 @@ namespace BankSystem
 {
     public partial class frmMain : Form
     {
-        private ClientRepository ClientRepository = new ClientRepository();
+        private ClientRepository _clientRepository = new ClientRepository();
 
         public frmMain()
         {
@@ -22,9 +22,9 @@ namespace BankSystem
 
         private void cmdFindClient_Click(object sender, EventArgs e)
         {
-            lblClientNotExists.Visible = false;
+            lblInfoText.Visible = false;
             string text = txtFindClient.Text;
-            int clientId = ClientRepository.FindClientIdByText(text);
+            int clientId = _clientRepository.FindClientIdByText(text);
             if (clientId > 0)
             {
                 using (frmClientManagement newForm = new frmClientManagement(clientId))
@@ -32,9 +32,15 @@ namespace BankSystem
                     newForm.ShowDialog();
                 }
             }
-            else
+            else if (clientId == 0)
             {
-                lblClientNotExists.Visible = true;
+                lblInfoText.Text = "Klient nebol nájdený v databáze";
+                lblInfoText.Visible = true;
+            }
+            else if (clientId == -1)
+            {
+                lblInfoText.Text = _clientRepository.NoDbConnection;
+                lblInfoText.Visible = true;
             }
            
         }

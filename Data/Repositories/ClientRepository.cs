@@ -10,11 +10,8 @@ using System.Diagnostics;
 
 namespace Data.Repositories
 {
-    public class ClientRepository
+    public class ClientRepository : MainRepository
     {
-        //private const string CONNECTION_STRING = @"Server = TRANSFORMER6\SQLEXPRESS2017; Database  = TransformerBank; Trusted_Connection = True";
-        private const string CONNECTION_STRING = @"Server = localhost\SQLEXPRESS; Database  = TransformerBank; Trusted_Connection = True";
-
         public ClientModel Client = new ClientModel();
         public int SelectedId = 0;
 
@@ -23,7 +20,16 @@ namespace Data.Repositories
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                connection.Open();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return -1;
+                }
+
                 string sqlQuery = @"SELECT C.ClientId  
                                    FROM Clients AS C 
                                    INNER JOIN BankAccounts AS A ON C.ClientID = A.ClientID
