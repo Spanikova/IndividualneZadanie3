@@ -10,12 +10,21 @@ using System.Diagnostics;
 
 namespace Data.Repositories
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ClientRepository : MainRepository
     {
+        /// <summary>
+        /// Instance of ClientModel class used to store data from database.
+        /// </summary>
         public ClientModel Client = new ClientModel();
-        public int SelectedId = 0;
 
-
+        /// <summary>
+        /// Returns client ID from database by id card, IBAN or surname based on input text. 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public int FindClientIdByText(string text)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -48,6 +57,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Finds info about client and bank account in database based on input id. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ClientModel FindClientById(int id)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
