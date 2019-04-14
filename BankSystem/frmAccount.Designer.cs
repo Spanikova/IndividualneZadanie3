@@ -235,7 +235,7 @@
             // 
             // txtPhoneNum
             // 
-            this.txtPhoneNum.Location = new System.Drawing.Point(107, 224);
+            this.txtPhoneNum.Location = new System.Drawing.Point(107, 232);
             this.txtPhoneNum.MaxLength = 15;
             this.txtPhoneNum.Name = "txtPhoneNum";
             this.txtPhoneNum.Size = new System.Drawing.Size(170, 20);
@@ -244,11 +244,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 199);
+            this.label2.Location = new System.Drawing.Point(18, 205);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 21;
-            this.label2.Text = "Mesto";
+            this.label2.Text = "Mesto:";
             // 
             // lblStreet
             // 
@@ -261,7 +261,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(107, 192);
+            this.txtCity.Location = new System.Drawing.Point(107, 202);
             this.txtCity.MaxLength = 30;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(170, 20);
@@ -269,7 +269,7 @@
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(107, 165);
+            this.txtStreet.Location = new System.Drawing.Point(107, 169);
             this.txtStreet.MaxLength = 30;
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(170, 20);
@@ -338,7 +338,7 @@
             // lblPhoneNum
             // 
             this.lblPhoneNum.AutoSize = true;
-            this.lblPhoneNum.Location = new System.Drawing.Point(18, 227);
+            this.lblPhoneNum.Location = new System.Drawing.Point(17, 235);
             this.lblPhoneNum.Name = "lblPhoneNum";
             this.lblPhoneNum.Size = new System.Drawing.Size(57, 13);
             this.lblPhoneNum.TabIndex = 8;

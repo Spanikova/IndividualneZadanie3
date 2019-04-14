@@ -146,29 +146,20 @@ namespace Data.Repositories
                     Debug.WriteLine(e.Message);
                     return false;
                 }
-                int id = client.ClientID;
-                string name = client.Name;
-                string surname = client.Surname;
-                string title = client.Title;
-                string birthNumber = client.BirthNumber;
-                string idCard = client.IdCardNumber;
-                string street = client.Street;
-                string city = client.City;
-                string phoneNumber = client.PhoneNumber;
                 string sqlQuery = @"UPDATE Clients 
                                     SET Name = @name, Surname = @surname, Title = @title, BirthNumber = @birthNumber, 
                                         IdCardNumber = @idCard, Street = @street, City = @city, PhoneNumber = @phoneNumber
                                     WHERE CLientID = @id;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
-                command.Parameters.Add("@surname", SqlDbType.NVarChar).Value = surname;
-                command.Parameters.Add("@title", SqlDbType.NVarChar).Value = title;
-                command.Parameters.Add("@birthNumber", SqlDbType.NVarChar).Value = birthNumber;
-                command.Parameters.Add("@idCard", SqlDbType.NVarChar).Value = idCard;
-                command.Parameters.Add("@street", SqlDbType.NVarChar).Value = street;
-                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = city;
-                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = phoneNumber;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = client.ClientID;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = client.Name;
+                command.Parameters.Add("@surname", SqlDbType.NVarChar).Value = client.Surname;
+                command.Parameters.Add("@title", SqlDbType.NVarChar).Value = client.Title;
+                command.Parameters.Add("@birthNumber", SqlDbType.NVarChar).Value = client.BirthNumber;
+                command.Parameters.Add("@idCard", SqlDbType.NVarChar).Value = client.IdCardNumber;
+                command.Parameters.Add("@street", SqlDbType.NVarChar).Value = client.Street;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = client.City;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = client.PhoneNumber;
                 try
                 {
                     command.ExecuteNonQuery();
@@ -182,9 +173,51 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Inserts new client into database.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public int InsertClient(ClientModel client)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return -1;
+                }               
+                string sqlQuery = @"INSERT INTO Clients (Name, Surname, Title, BirthNumber, IdCardNumber, Street, City, PhoneNumber)
+                                    OUTPUT INSERTED.ClientID
+                                    VALUES (@name, @surname, @title, @birthNumber, @idCard, @street, @city, @phoneNumber);";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = client.Name;
+                command.Parameters.Add("@surname", SqlDbType.NVarChar).Value = client.Surname;
+                command.Parameters.Add("@title", SqlDbType.NVarChar).Value = client.Title;
+                command.Parameters.Add("@birthNumber", SqlDbType.NVarChar).Value = client.BirthNumber;
+                command.Parameters.Add("@idCard", SqlDbType.NVarChar).Value = client.IdCardNumber;
+                command.Parameters.Add("@street", SqlDbType.NVarChar).Value = client.Street;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = client.City;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = client.PhoneNumber;
+                try
+                {
+                    return (int) command.ExecuteScalar();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return -1;
+                }
+            }
+        }
 
 
-       
+
+
     }
 }
 

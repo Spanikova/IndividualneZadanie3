@@ -70,9 +70,13 @@ namespace BankSystem
             _clientRepository.Client.Street = txtStreet.Text;
             _clientRepository.Client.City = txtCity.Text;
             _clientRepository.Client.PhoneNumber = txtPhoneNum.Text;
+            _clientRepository.Client.BankAccount.Iban = lblIban.Text; // TO DO RANDOM IBAN
             _clientRepository.Client.BankAccount.AccountName = txtAccName.Text;
+            _clientRepository.Client.BankAccount.AccountBalance = 
+                decimal.Parse(lblAccBalance.Text.Substring(0, lblAccBalance.Text.IndexOf(' ')));
             _clientRepository.Client.BankAccount.AuthOverdraftLimit =
                    decimal.Parse(cmbLimit.Text.Substring(0, cmbLimit.Text.IndexOf(' ')));
+            _clientRepository.Client.BankAccount.OpeningDate = DateTime.Parse(lblAccOpenDate.Text);
             if (_clientId > 0)
             {
                 bool clientIsUpdated = _clientRepository.UpdateClient(_clientRepository.Client);
@@ -85,7 +89,20 @@ namespace BankSystem
                 {
                     lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
                 }
-            }            
+            } 
+            else
+            {
+                _clientRepository.Client.ClientID = _clientRepository.InsertClient(_clientRepository.Client);
+                bool accountIsInserted = _bankAccountRepository.InsertBankAccount(_clientRepository.Client);
+                if (accountIsInserted)
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
+                }
+            }
         }
     }
 }
