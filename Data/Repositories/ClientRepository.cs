@@ -38,22 +38,29 @@ namespace Data.Repositories
                     Debug.WriteLine(e.Message);
                     return -1;
                 }
-
                 string sqlQuery = @"SELECT C.ClientId  
                                    FROM Clients AS C 
                                    INNER JOIN BankAccounts AS A ON C.ClientID = A.ClientID
                                    WHERE C.IdCardNumber = @text OR A.IBAN = @text OR C.Surname = @text AND A.ClosingDate IS NULL";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@text", SqlDbType.NVarChar).Value = text;
+                try
+                 {
                 object queryResult = command.ExecuteScalar();
-                if (queryResult != null)
-                {
-                    return (int)queryResult;
+                    if (queryResult != null)
+                    {
+                        return (int)queryResult;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                else
+                catch(SqlException e)
                 {
-                    return 0;
-                }
+                    Debug.WriteLine(e.Message);
+                    return -1;
+                }                
             }
         }
 
@@ -66,15 +73,22 @@ namespace Data.Repositories
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                connection.Open();
+                //try
+                //{
+                    connection.Open();
+               // }
+                //catch (SqlException e)
+               // {
+                //    Debug.WriteLine(e.Message);
+               // }
                 string sqlQuery = @"SELECT C.ClientID, C.Name, C.Surname, C.Title, c.BirthNumber, C.IdCardNumber, C.Street,
                                     C.City, C.PhoneNumber, A.AccountID, A.AccountName, A.IBAN, A.OpeningDate, 
-                                    A.AccountBalance, A.AuthOverdraftLimit, A.OpeningDate
+                                    A.AccountBalance, A.AuthOverdraftLimit, A.ClosingDate
                                     FROM Clients AS C 
                                     INNER JOIN BankAccounts AS A ON C.ClientID = A.ClientID
                                     WHERE C.ClientID = @id;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -94,10 +108,63 @@ namespace Data.Repositories
                         Client.BankAccount.OpeningDate = reader.GetDateTime(12);
                         Client.BankAccount.AccountBalance = reader.GetDecimal(13);
                         Client.BankAccount.AuthOverdraftLimit = reader.GetDecimal(14);
-                        Client.BankAccount.OpeningDate = reader.GetDateTime(15);
+                        if (reader.IsDBNull(15))
+                        {                            
+                        }
+                        else
+                        {
+                            Client.BankAccount.ClosingDate = reader.GetDateTime(15);
+                        }
+
+
                     }
                 }
                 return Client;
+            }
+        }
+
+        /// <summary>
+        /// Updates client and bank account info in database.
+        /// </summary>
+        /// <param name="id"></param>
+        public int UpdateClient(ClientModel client)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return -1;
+                }
+                int id = client.ClientID;
+                string name = client.Name;
+                string surname = client.Surname;
+                string title = client.Title;
+                string birthNumber = client.BirthNumber;
+                string idCard = client.IdCardNumber;
+                string street = client.Street;
+                string city = client.City;
+                string phoneNumber = client.PhoneNumber;
+                string sqlQuery = @"UPDATE Clients 
+                                    SET Name = @name, Surname = @surname, Title = @title, BirthNumber = @birthNumber, 
+                                        IdCardNumber = @idCard, Street = @street, City = @city, PhoneNumber = @phoneNumber
+                                    WHERE CLientID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
+                command.Parameters.Add("@surname", SqlDbType.NVarChar).Value = surname;
+                command.Parameters.Add("@title", SqlDbType.NVarChar).Value = title;
+                command.Parameters.Add("@birthNumber", SqlDbType.NVarChar).Value = birthNumber;
+                command.Parameters.Add("@idCard", SqlDbType.NVarChar).Value = idCard;
+                command.Parameters.Add("@street", SqlDbType.NVarChar).Value = street;
+                command.Parameters.Add("@city", SqlDbType.NVarChar).Value = city;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = phoneNumber;
+                command.ExecuteNonQuery();
+                return id;
             }
         }
 

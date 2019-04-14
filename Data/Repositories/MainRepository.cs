@@ -21,6 +21,11 @@ namespace Data.Repositories
         /// <summary>
         /// User message about no connection to database.
         /// </summary>
-        public const string NO_DB_CONNECTION = "Nepodarilo sa pripojiť k databáze. \nProsím, kontaktujte administrátora."; 
+        public const string NO_DB_CONNECTION = "Nepodarilo sa pripojiť k databáze. \nProsím, kontaktujte administrátora.";
+
+        /// <summary>
+        /// User message about no connection to database.
+        /// </summary>
+        public const string UNKNOWN_ERROR = "NAstala chyba. \nProsím, kontaktujte administrátora.";
     }
 }

@@ -42,6 +42,11 @@ namespace BankSystem
                 lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
                 lblInfoText.Visible = true;
             }
+            else
+            {
+                lblInfoText.Text = MainRepository.UNKNOWN_ERROR;
+                lblInfoText.Visible = true;
+            }
             txtFindClient.Text = "";
         }
 

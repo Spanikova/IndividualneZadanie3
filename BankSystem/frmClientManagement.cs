@@ -33,9 +33,13 @@ namespace BankSystem
 
         private void cmdUpdate_Click(object sender, EventArgs e)
         {
-            using (frmAccount newForm = new frmAccount(42))
+            using (frmAccount newForm = new frmAccount(_clientId))
             {
-                newForm.ShowDialog();
+                DialogResult dialogResult = newForm.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    frmClientManagement_Load(sender, e);
+                }
             }
         }
 
@@ -82,19 +86,21 @@ namespace BankSystem
         private void frmClientManagement_Load(object sender, EventArgs e)
         {
             _clientRepository.FindClientById(_clientId);
-            lblClientName.Text = $"{_clientRepository.Client.Title + " " + _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
+            lblClientName.Text = $@"{_clientRepository.Client.Title + " " +
+            _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
             lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber}";
             lblClientIdCard.Text = $"{_clientRepository.Client.IdCardNumber}";
-            lblClientStreet.Text = $@"{_clientRepository.Client.Street}";
+            lblClientStreet.Text = $"{_clientRepository.Client.Street}";
             lblClientCity.Text = $"{_clientRepository.Client.City}";
             lblClientPhoneNumber.Text = $"{_clientRepository.Client.PhoneNumber}";
             lblAccIban.Text = $"{_clientRepository.Client.BankAccount.IBAN}";
             lblAccName.Text = $"{_clientRepository.Client.BankAccount.AccountName}";
             lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
             lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
-            lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.Date.ToShortDateString()}";
+            lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.ToShortDateString()}";
         }
     }
 }
+
 
 
