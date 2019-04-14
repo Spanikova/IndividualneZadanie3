@@ -14,6 +14,7 @@ namespace BankSystem
     public partial class frmClientManagement : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();
+        private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
         private int _clientId = 0;
 
         /// <summary>
@@ -77,8 +78,9 @@ namespace BankSystem
 
         private void cmdCloseAccount_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Hodor?", "Hodor!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Chcete naozaj zatvoriť účet?", "Zatvorenie účtu", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                _bankAccountRepository.CloseAccount(_clientRepository.Client.BankAccount.AccountID);
                 DialogResult = DialogResult.OK;
             }
         }

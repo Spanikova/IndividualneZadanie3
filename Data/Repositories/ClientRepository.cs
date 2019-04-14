@@ -41,7 +41,7 @@ namespace Data.Repositories
                 string sqlQuery = @"SELECT C.ClientId  
                                    FROM Clients AS C 
                                    INNER JOIN BankAccounts AS A ON C.ClientID = A.ClientID
-                                   WHERE C.IdCardNumber = @text OR A.IBAN = @text OR C.Surname = @text AND A.ClosingDate IS NULL";
+                                   WHERE (C.IdCardNumber = @text OR A.IBAN = @text OR C.Surname = @text) AND A.ClosingDate IS NULL";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@text", SqlDbType.NVarChar).Value = text;
                 try
@@ -182,45 +182,9 @@ namespace Data.Repositories
             }
         }
 
-        /// <summary>
-        /// Updates bank account info in database.
-        /// </summary>
-        /// <param name="account"></param>
-        /// <returns></returns>
-        public bool UpdateBankAccount(BankAccountModel account)
-        {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (SqlException e)
-                {
-                    Debug.WriteLine(e.Message);
-                    return false;
-                }
-                string accountName = account.AccountName;
-                decimal limit = account.AuthOverdraftLimit;
-                string sqlQuery = @"UPDATE BankAccounts 
-                                    SET AccountName = @accountName, AuthOverdraftLimit = @limit
-                                    WHERE AccountID = @id;";
-                SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@accountName", SqlDbType.NVarChar).Value = accountName;
-                command.Parameters.Add("@limit", SqlDbType.Decimal).Value = limit;
-                command.Parameters.Add("@id", SqlDbType.Decimal).Value = account.AccountID;
-                try
-                {
-                    command.ExecuteNonQuery();
-                    return true;
-                }
-                catch (SqlException e)
-                {
-                    Debug.WriteLine(e.Message);
-                    return false;
-                }
-            }
-        }
+
+
+       
     }
 }
 

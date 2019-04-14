@@ -26,6 +26,6 @@ namespace Data.Repositories
         /// <summary>
         /// User message about no connection to database.
         /// </summary>
-        public const string UNKNOWN_ERROR = "NAstala chyba. \nProsím, kontaktujte administrátora.";
+        public const string UNKNOWN_ERROR = "Nastala chyba. \nProsím, kontaktujte administrátora.";
     }
 }

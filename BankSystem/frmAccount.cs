@@ -14,6 +14,7 @@ namespace BankSystem
     public partial class frmAccount : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();
+        private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
         private int _clientId = 0;
 
         /// <summary>
@@ -56,13 +57,7 @@ namespace BankSystem
                 txtStreet.Text = $"{_clientRepository.Client.Street}";
                 txtCity.Text = $"{_clientRepository.Client.City}";
                 txtPhoneNum.Text = $"{_clientRepository.Client.PhoneNumber}";
-            }
-            
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-
+            }            
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -81,7 +76,7 @@ namespace BankSystem
             if (_clientId > 0)
             {
                 bool clientIsUpdated = _clientRepository.UpdateClient(_clientRepository.Client);
-                bool accountIsUpdated = _clientRepository.UpdateBankAccount(_clientRepository.Client.BankAccount);
+                bool accountIsUpdated = _bankAccountRepository.UpdateBankAccount(_clientRepository.Client.BankAccount);
                 if (clientIsUpdated && accountIsUpdated)
                 {
                     DialogResult = DialogResult.OK;
