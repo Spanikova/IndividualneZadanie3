@@ -45,8 +45,8 @@ namespace Data.Repositories
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@text", SqlDbType.NVarChar).Value = text;
                 try
-                 {
-                object queryResult = command.ExecuteScalar();
+                {
+                    object queryResult = command.ExecuteScalar();
                     if (queryResult != null)
                     {
                         return (int)queryResult;
@@ -56,11 +56,11 @@ namespace Data.Repositories
                         return 0;
                     }
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
                     return -1;
-                }                
+                }
             }
         }
 
@@ -73,14 +73,14 @@ namespace Data.Repositories
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                //try
-                //{
+                try
+                {
                     connection.Open();
-               // }
-                //catch (SqlException e)
-               // {
-                //    Debug.WriteLine(e.Message);
-               // }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
                 string sqlQuery = @"SELECT C.ClientID, C.Name, C.Surname, C.Title, c.BirthNumber, C.IdCardNumber, C.Street,
                                     C.City, C.PhoneNumber, A.AccountID, A.AccountName, A.IBAN, A.OpeningDate, 
                                     A.AccountBalance, A.AuthOverdraftLimit, A.ClosingDate
@@ -89,45 +89,51 @@ namespace Data.Repositories
                                     WHERE C.ClientID = @id;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                using (SqlDataReader reader = command.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Client.ClientID = reader.GetInt32(0);
-                        Client.Name = reader.GetString(1);
-                        Client.Surname = reader.GetString(2);
-                        Client.Title = reader.GetString(3);
-                        Client.BirthNumber = reader.GetString(4);
-                        Client.IdCardNumber = reader.GetString(5);
-                        Client.Street = reader.GetString(6);
-                        Client.City = reader.GetString(7);
-                        Client.PhoneNumber = reader.GetString(8);
-                        Client.BankAccount.AccountID = reader.GetInt32(9);
-                        Client.BankAccount.AccountName = reader.GetString(10);
-                        Client.BankAccount.IBAN = reader.GetString(11);
-                        Client.BankAccount.OpeningDate = reader.GetDateTime(12);
-                        Client.BankAccount.AccountBalance = reader.GetDecimal(13);
-                        Client.BankAccount.AuthOverdraftLimit = reader.GetDecimal(14);
-                        if (reader.IsDBNull(15))
-                        {                            
-                        }
-                        else
+                        if (reader.Read())
                         {
-                            Client.BankAccount.ClosingDate = reader.GetDateTime(15);
+                            Client.ClientID = reader.GetInt32(0);
+                            Client.Name = reader.GetString(1);
+                            Client.Surname = reader.GetString(2);
+                            Client.Title = reader.GetString(3);
+                            Client.BirthNumber = reader.GetString(4);
+                            Client.IdCardNumber = reader.GetString(5);
+                            Client.Street = reader.GetString(6);
+                            Client.City = reader.GetString(7);
+                            Client.PhoneNumber = reader.GetString(8);
+                            Client.BankAccount.AccountID = reader.GetInt32(9);
+                            Client.BankAccount.AccountName = reader.GetString(10);
+                            Client.BankAccount.Iban = reader.GetString(11);
+                            Client.BankAccount.OpeningDate = reader.GetDateTime(12);
+                            Client.BankAccount.AccountBalance = reader.GetDecimal(13);
+                            Client.BankAccount.AuthOverdraftLimit = reader.GetDecimal(14);
+                            if (reader.IsDBNull(15))
+                            {
+                            }
+                            else
+                            {
+                                Client.BankAccount.ClosingDate = reader.GetDateTime(15);
+                            }
                         }
-
-
                     }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
                 }
                 return Client;
             }
         }
 
         /// <summary>
-        /// Updates client and bank account info in database.
+        /// Updates client info in database.
         /// </summary>
-        /// <param name="id"></param>
-        public int UpdateClient(ClientModel client)
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public bool UpdateClient(ClientModel client)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -138,7 +144,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
-                    return -1;
+                    return false;
                 }
                 int id = client.ClientID;
                 string name = client.Name;
@@ -154,7 +160,7 @@ namespace Data.Repositories
                                         IdCardNumber = @idCard, Street = @street, City = @city, PhoneNumber = @phoneNumber
                                     WHERE CLientID = @id;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
                 command.Parameters.Add("@surname", SqlDbType.NVarChar).Value = surname;
                 command.Parameters.Add("@title", SqlDbType.NVarChar).Value = title;
@@ -163,11 +169,58 @@ namespace Data.Repositories
                 command.Parameters.Add("@street", SqlDbType.NVarChar).Value = street;
                 command.Parameters.Add("@city", SqlDbType.NVarChar).Value = city;
                 command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = phoneNumber;
-                command.ExecuteNonQuery();
-                return id;
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return false;
+                }
             }
         }
 
+        /// <summary>
+        /// Updates bank account info in database.
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool UpdateBankAccount(BankAccountModel account)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return false;
+                }
+                string accountName = account.AccountName;
+                decimal limit = account.AuthOverdraftLimit;
+                string sqlQuery = @"UPDATE BankAccounts 
+                                    SET AccountName = @accountName, AuthOverdraftLimit = @limit
+                                    WHERE AccountID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@accountName", SqlDbType.NVarChar).Value = accountName;
+                command.Parameters.Add("@limit", SqlDbType.Decimal).Value = limit;
+                command.Parameters.Add("@id", SqlDbType.Decimal).Value = account.AccountID;
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return false;
+                }
+            }
+        }
     }
 }
 

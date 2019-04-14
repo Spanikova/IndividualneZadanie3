@@ -42,7 +42,7 @@ namespace BankSystem
             if (_clientId > 0)
             {
                 _clientRepository.FindClientById(_clientId);
-                lblAccIban.Text = $"{_clientRepository.Client.BankAccount.IBAN}";
+                lblAccIban.Text = $"{_clientRepository.Client.BankAccount.Iban}";
                 txtAccName.Text = $"{_clientRepository.Client.BankAccount.AccountName}";
                 lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
                 cmbLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
@@ -67,19 +67,30 @@ namespace BankSystem
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            _clientRepository.Client.Name = txtClientName.Text;
+            _clientRepository.Client.Surname = txtSurname.Text;
+            _clientRepository.Client.Title = txtTitle.Text;
+            _clientRepository.Client.BirthNumber = txtBirthNumber1.Text + txtBirthNumber2.Text;
+            _clientRepository.Client.IdCardNumber = txtIdCard.Text;
+            _clientRepository.Client.Street = txtStreet.Text;
+            _clientRepository.Client.City = txtCity.Text;
+            _clientRepository.Client.PhoneNumber = txtPhoneNum.Text;
+            _clientRepository.Client.BankAccount.AccountName = txtAccName.Text;
+            _clientRepository.Client.BankAccount.AuthOverdraftLimit =
+                   decimal.Parse(cmbLimit.Text.Substring(0, cmbLimit.Text.IndexOf(' ')));
             if (_clientId > 0)
             {
-                _clientRepository.Client.Name = txtClientName.Text;
-                _clientRepository.Client.Surname = txtSurname.Text;
-                _clientRepository.Client.Title = txtTitle.Text;
-                _clientRepository.Client.BirthNumber = txtBirthNumber1.Text + txtBirthNumber2.Text;
-                _clientRepository.Client.IdCardNumber = txtIdCard.Text;
-                _clientRepository.Client.Street = txtStreet.Text;
-                _clientRepository.Client.City = txtCity.Text;
-                _clientRepository.Client.PhoneNumber = txtPhoneNum.Text;
-                _clientRepository.UpdateClient(_clientRepository.Client);
-            }
-            DialogResult = DialogResult.OK;
+                bool clientIsUpdated = _clientRepository.UpdateClient(_clientRepository.Client);
+                bool accountIsUpdated = _clientRepository.UpdateBankAccount(_clientRepository.Client.BankAccount);
+                if (clientIsUpdated && accountIsUpdated)
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
+                }
+            }            
         }
     }
 }

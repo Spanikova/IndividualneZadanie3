@@ -93,7 +93,7 @@ namespace BankSystem
             lblClientStreet.Text = $"{_clientRepository.Client.Street}";
             lblClientCity.Text = $"{_clientRepository.Client.City}";
             lblClientPhoneNumber.Text = $"{_clientRepository.Client.PhoneNumber}";
-            lblAccIban.Text = $"{_clientRepository.Client.BankAccount.IBAN}";
+            lblAccIban.Text = $"{_clientRepository.Client.BankAccount.Iban}";
             lblAccName.Text = $"{_clientRepository.Client.BankAccount.AccountName}";
             lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
             lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";

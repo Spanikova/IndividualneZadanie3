@@ -409,7 +409,6 @@
             this.btnCancel.TabIndex = 25;
             this.btnCancel.Text = "Zrušiť";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblInfoText
             // 
