@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlSender = new System.Windows.Forms.Panel();
+            this.lblBank = new System.Windows.Forms.Label();
             this.txtSender = new Controls.NumericTextBox();
             this.lblSender = new System.Windows.Forms.Label();
             this.pnlRecipient = new System.Windows.Forms.Panel();
+            this.lblBank2 = new System.Windows.Forms.Label();
             this.txtRecipient = new Controls.NumericTextBox();
             this.lblRecipient = new System.Windows.Forms.Label();
             this.pnlTransInfo = new System.Windows.Forms.Panel();
@@ -49,8 +51,6 @@
             this.pnlSum = new System.Windows.Forms.Panel();
             this.txtSum = new Controls.NumericTextBox();
             this.lblSum = new System.Windows.Forms.Label();
-            this.lblBank = new System.Windows.Forms.Label();
-            this.lblBank2 = new System.Windows.Forms.Label();
             this.pnlSender.SuspendLayout();
             this.pnlRecipient.SuspendLayout();
             this.pnlTransInfo.SuspendLayout();
@@ -67,6 +67,16 @@
             this.pnlSender.Name = "pnlSender";
             this.pnlSender.Size = new System.Drawing.Size(212, 55);
             this.pnlSender.TabIndex = 8;
+            // 
+            // lblBank
+            // 
+            this.lblBank.AutoSize = true;
+            this.lblBank.Location = new System.Drawing.Point(112, 15);
+            this.lblBank.Name = "lblBank";
+            this.lblBank.Size = new System.Drawing.Size(38, 13);
+            this.lblBank.TabIndex = 2;
+            this.lblBank.Text = "Banka";
+            this.lblBank.Visible = false;
             // 
             // txtSender
             // 
@@ -94,6 +104,16 @@
             this.pnlRecipient.Name = "pnlRecipient";
             this.pnlRecipient.Size = new System.Drawing.Size(207, 55);
             this.pnlRecipient.TabIndex = 9;
+            // 
+            // lblBank2
+            // 
+            this.lblBank2.AutoSize = true;
+            this.lblBank2.Location = new System.Drawing.Point(105, 15);
+            this.lblBank2.Name = "lblBank2";
+            this.lblBank2.Size = new System.Drawing.Size(38, 13);
+            this.lblBank2.TabIndex = 3;
+            this.lblBank2.Text = "Banka";
+            this.lblBank2.Visible = false;
             // 
             // txtRecipient
             // 
@@ -250,6 +270,7 @@
             // 
             this.txtSum.AllowNegative = false;
             this.txtSum.Location = new System.Drawing.Point(66, 3);
+            this.txtSum.MaxLength = 7;
             this.txtSum.Name = "txtSum";
             this.txtSum.Size = new System.Drawing.Size(100, 20);
             this.txtSum.TabIndex = 1;
@@ -262,26 +283,6 @@
             this.lblSum.Size = new System.Drawing.Size(37, 13);
             this.lblSum.TabIndex = 0;
             this.lblSum.Text = "Suma:";
-            // 
-            // lblBank
-            // 
-            this.lblBank.AutoSize = true;
-            this.lblBank.Location = new System.Drawing.Point(112, 15);
-            this.lblBank.Name = "lblBank";
-            this.lblBank.Size = new System.Drawing.Size(38, 13);
-            this.lblBank.TabIndex = 2;
-            this.lblBank.Text = "Banka";
-            this.lblBank.Visible = false;
-            // 
-            // lblBank2
-            // 
-            this.lblBank2.AutoSize = true;
-            this.lblBank2.Location = new System.Drawing.Point(105, 15);
-            this.lblBank2.Name = "lblBank2";
-            this.lblBank2.Size = new System.Drawing.Size(38, 13);
-            this.lblBank2.TabIndex = 3;
-            this.lblBank2.Text = "Banka";
-            this.lblBank2.Visible = false;
             // 
             // frmTransaction
             // 

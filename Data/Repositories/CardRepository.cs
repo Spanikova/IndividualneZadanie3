@@ -144,5 +144,34 @@ namespace Card.Repositories
                 }
             }
         }
+
+        public void BlockCard(string cardNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                string sqlQuery = @"UPDATE Cards 
+                                    SET IsBlocked = 1
+                                    WHERE CardNumber = @cardNum;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@cardNum", SqlDbType.Char).Value = cardNumber;
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
+        }
     }
 }

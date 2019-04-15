@@ -76,22 +76,23 @@
             // 
             // pnlLogin
             // 
+            this.pnlLogin.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogin.Controls.Add(this.lblInfoText);
             this.pnlLogin.Controls.Add(this.btnAccept);
             this.pnlLogin.Controls.Add(this.lblInsertCardNum);
             this.pnlLogin.Controls.Add(this.txtPin);
             this.pnlLogin.Controls.Add(this.txtCardNumber);
             this.pnlLogin.Controls.Add(this.lblInsertPin);
-            this.pnlLogin.Location = new System.Drawing.Point(81, 12);
+            this.pnlLogin.Location = new System.Drawing.Point(73, 1);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(254, 135);
+            this.pnlLogin.Size = new System.Drawing.Size(254, 158);
             this.pnlLogin.TabIndex = 4;
             // 
             // btnAccept
             // 
             this.btnAccept.BackColor = System.Drawing.Color.Lime;
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnAccept.Location = new System.Drawing.Point(112, 67);
+            this.btnAccept.Location = new System.Drawing.Point(78, 67);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(76, 29);
             this.btnAccept.TabIndex = 4;
@@ -104,11 +105,12 @@
             this.lblInfoText.AutoSize = true;
             this.lblInfoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblInfoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblInfoText.Location = new System.Drawing.Point(41, 99);
+            this.lblInfoText.Location = new System.Drawing.Point(30, 99);
             this.lblInfoText.Name = "lblInfoText";
             this.lblInfoText.Size = new System.Drawing.Size(76, 20);
             this.lblInfoText.TabIndex = 12;
             this.lblInfoText.Text = "Info text";
+            this.lblInfoText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblInfoText.Visible = false;
             // 
             // frmMain
