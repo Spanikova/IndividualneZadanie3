@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Card.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace TransformerBank
 {
     public partial class frmMain : Form
     {
+        private CardRepository _cardRepository = new CardRepository();
         public frmMain()
         {
             InitializeComponent();
@@ -21,6 +23,15 @@ namespace TransformerBank
         {
             string cardNum = txtCardNumber.Text;
             string pin = txtPin.Text;
+            if (_cardRepository.CheckLogin(cardNum, pin))
+            {
+                pnlLogin.Visible = false;
+            }
+            else
+            {
+                lblInfoText.Text = "Nesprávne údaje";
+                lblInfoText.Visible = true;
+            }
         }
     }
 }

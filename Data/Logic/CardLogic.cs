@@ -11,8 +11,8 @@ namespace Card.Logic
         public static string GenerateCardNum()
         {
             Random random = new Random();
-            string randomCardNum1 = random.Next(100000, 999999).ToString();
-            string randomCardNum2 = random.Next(100000, 999999).ToString();
+            string randomCardNum1 = random.Next(10000000, 99999999).ToString();
+            string randomCardNum2 = random.Next(10000000, 99999999).ToString();
             return $"{randomCardNum1}{randomCardNum2}";
         }
 

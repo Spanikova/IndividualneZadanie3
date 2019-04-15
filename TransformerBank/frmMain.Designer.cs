@@ -34,12 +34,13 @@
             this.lblInsertPin = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.lblInfoText = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCardNumber
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(14, 32);
+            this.txtCardNumber.Location = new System.Drawing.Point(112, 13);
             this.txtCardNumber.MaxLength = 16;
             this.txtCardNumber.Name = "txtCardNumber";
             this.txtCardNumber.Size = new System.Drawing.Size(109, 20);
@@ -57,17 +58,17 @@
             // 
             // txtPin
             // 
-            this.txtPin.Location = new System.Drawing.Point(14, 79);
+            this.txtPin.Location = new System.Drawing.Point(112, 41);
             this.txtPin.MaxLength = 4;
             this.txtPin.Name = "txtPin";
             this.txtPin.PasswordChar = '*';
-            this.txtPin.Size = new System.Drawing.Size(61, 20);
+            this.txtPin.Size = new System.Drawing.Size(76, 20);
             this.txtPin.TabIndex = 2;
             // 
             // lblInsertPin
             // 
             this.lblInsertPin.AutoSize = true;
-            this.lblInsertPin.Location = new System.Drawing.Point(11, 63);
+            this.lblInsertPin.Location = new System.Drawing.Point(42, 44);
             this.lblInsertPin.Name = "lblInsertPin";
             this.lblInsertPin.Size = new System.Drawing.Size(64, 13);
             this.lblInsertPin.TabIndex = 3;
@@ -75,27 +76,40 @@
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.lblInfoText);
             this.pnlLogin.Controls.Add(this.btnAccept);
             this.pnlLogin.Controls.Add(this.lblInsertCardNum);
             this.pnlLogin.Controls.Add(this.txtPin);
-            this.pnlLogin.Controls.Add(this.lblInsertPin);
             this.pnlLogin.Controls.Add(this.txtCardNumber);
+            this.pnlLogin.Controls.Add(this.lblInsertPin);
             this.pnlLogin.Location = new System.Drawing.Point(81, 12);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(183, 115);
+            this.pnlLogin.Size = new System.Drawing.Size(254, 135);
             this.pnlLogin.TabIndex = 4;
             // 
             // btnAccept
             // 
             this.btnAccept.BackColor = System.Drawing.Color.Lime;
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnAccept.Location = new System.Drawing.Point(95, 70);
+            this.btnAccept.Location = new System.Drawing.Point(112, 67);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(76, 36);
+            this.btnAccept.Size = new System.Drawing.Size(76, 29);
             this.btnAccept.TabIndex = 4;
             this.btnAccept.Text = "Potvrdiť";
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // lblInfoText
+            // 
+            this.lblInfoText.AutoSize = true;
+            this.lblInfoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblInfoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInfoText.Location = new System.Drawing.Point(41, 99);
+            this.lblInfoText.Name = "lblInfoText";
+            this.lblInfoText.Size = new System.Drawing.Size(76, 20);
+            this.lblInfoText.TabIndex = 12;
+            this.lblInfoText.Text = "Info text";
+            this.lblInfoText.Visible = false;
             // 
             // frmMain
             // 
@@ -124,6 +138,7 @@
         private System.Windows.Forms.Label lblInsertPin;
         private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label lblInfoText;
     }
 }
 

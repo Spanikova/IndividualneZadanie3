@@ -108,5 +108,41 @@ namespace Card.Repositories
                 }
             }
         }
+
+        public bool CheckLogin(string cardNumber, string pin)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return false;
+                }
+                string sqlQuery = @"SELECT CardID FROM Cards WHERE CardNumber = @cardnum AND PIN = @pin;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@cardNum", SqlDbType.Char).Value = cardNumber;
+                command.Parameters.Add("@pin", SqlDbType.Char).Value = pin;
+                try
+                {
+                    if(command.ExecuteScalar() != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return false;
+                }
+            }
+        }
     }
 }
