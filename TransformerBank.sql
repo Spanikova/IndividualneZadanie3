@@ -11,7 +11,7 @@ Surname nvarchar (20) NOT NULL,
 Title nvarchar (15) NULL,
 BirthNumber varchar(10) NOT NULL,
 IdCardNumber nvarchar (8) NOT NULL,
-Street nvarchar (30) NULL,
+Street nvarchar (30) NOT NULL,
 City nvarchar (30) NOT NULL,
 PhoneNumber nvarchar (15) NOT NULL
 );
@@ -44,11 +44,11 @@ AccountID int FOREIGN KEY REFERENCES BankAccounts (AccountID)
 
 CREATE TABLE Transactions (
 TransactionID int IDENTITY (1,1) PRIMARY KEY NOT NULL,
-SenderID int FOREIGN KEY REFERENCES Clients (ClientID) NULL,
-RecipientID int FOREIGN KEY REFERENCES Clients (ClientID) NULL, 
+SenderIBAN char (24) NOT NULL,
+RecipientIBAN char (24) NOT NULL,
 Time Datetime NOT NULL,
 VS char(10) NULL,
 SS char(10) NULL,
 KS char(4) NULL,
-TransMessage varchar (20)
+TransMessage varchar (20) NULL
 );

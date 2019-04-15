@@ -1,4 +1,5 @@
-﻿using Data.Repositories;
+﻿using Data.Logic;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,6 @@ namespace BankSystem
 
         private void frmAccount_Load(object sender, EventArgs e)
         {
-            lblAccOpenDate.Text = DateTime.Now.ToShortDateString();
             if (_clientId > 0)
             {
                 _clientRepository.FindClientById(_clientId);
@@ -57,7 +57,13 @@ namespace BankSystem
                 txtStreet.Text = $"{_clientRepository.Client.Street}";
                 txtCity.Text = $"{_clientRepository.Client.City}";
                 txtPhoneNum.Text = $"{_clientRepository.Client.PhoneNumber}";
-            }            
+            }
+            else
+            {
+                cmbLimit.SelectedIndex = 0;
+                lblAccOpenDate.Text = DateTime.Now.ToShortDateString();
+                lblAccIban.Text = BankAccountLogic.GenerateIBAN();
+            }
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -70,9 +76,9 @@ namespace BankSystem
             _clientRepository.Client.Street = txtStreet.Text;
             _clientRepository.Client.City = txtCity.Text;
             _clientRepository.Client.PhoneNumber = txtPhoneNum.Text;
-            _clientRepository.Client.BankAccount.Iban = lblIban.Text; // TO DO RANDOM IBAN
+            _clientRepository.Client.BankAccount.Iban = lblIban.Text;
             _clientRepository.Client.BankAccount.AccountName = txtAccName.Text;
-            _clientRepository.Client.BankAccount.AccountBalance = 
+            _clientRepository.Client.BankAccount.AccountBalance =
                 decimal.Parse(lblAccBalance.Text.Substring(0, lblAccBalance.Text.IndexOf(' ')));
             _clientRepository.Client.BankAccount.AuthOverdraftLimit =
                    decimal.Parse(cmbLimit.Text.Substring(0, cmbLimit.Text.IndexOf(' ')));
@@ -89,7 +95,7 @@ namespace BankSystem
                 {
                     lblInfoText.Text = MainRepository.NO_DB_CONNECTION;
                 }
-            } 
+            }
             else
             {
                 _clientRepository.Client.ClientID = _clientRepository.InsertClient(_clientRepository.Client);

@@ -69,7 +69,7 @@ namespace Data.Repositories
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@clientId", SqlDbType.Int).Value = client.ClientID;
                 command.Parameters.Add("@accName", SqlDbType.NVarChar).Value = client.BankAccount.AccountName;
-                command.Parameters.Add("@iban", SqlDbType.NVarChar).Value = client.BankAccount.Iban;
+                command.Parameters.Add("@iban", SqlDbType.NVarChar).Value = "SK8128772549443518324365";    // TO DO RANDOM IBAN
                 command.Parameters.Add("@balance", SqlDbType.Decimal).Value = client.BankAccount.AccountBalance;
                 command.Parameters.Add("@limit", SqlDbType.Decimal).Value = client.BankAccount.AuthOverdraftLimit;
                 try

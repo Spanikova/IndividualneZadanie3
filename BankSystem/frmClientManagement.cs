@@ -88,9 +88,8 @@ namespace BankSystem
         private void frmClientManagement_Load(object sender, EventArgs e)
         {
             _clientRepository.FindClientById(_clientId);
-            lblClientName.Text = $@"{_clientRepository.Client.Title + " " +
-            _clientRepository.Client.Name + " " + _clientRepository.Client.Surname}";
-            lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber}";
+            lblClientName.Text = $"{_clientRepository.Client.Title } {_clientRepository.Client.Name} {_clientRepository.Client.Surname}";
+            lblClientBirthNumber.Text = $"{_clientRepository.Client.BirthNumber.Substring(0, 6)}/{_clientRepository.Client.BirthNumber.Substring(6, 4)}";
             lblClientIdCard.Text = $"{_clientRepository.Client.IdCardNumber}";
             lblClientStreet.Text = $"{_clientRepository.Client.Street}";
             lblClientCity.Text = $"{_clientRepository.Client.City}";

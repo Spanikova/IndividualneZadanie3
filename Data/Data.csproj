@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeleteThisEmptyClass.cs" />
+    <Compile Include="Logic\BankAccountLogic.cs" />
     <Compile Include="Models\BankAccountModel.cs" />
     <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
@@ -50,6 +51,12 @@
     <Compile Include="Repositories\BankAccountRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\MainRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controls\Support.csproj">
+      <Project>{125D687E-7153-4C25-9D39-FA3FD7F1145A}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
