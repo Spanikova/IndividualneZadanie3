@@ -28,23 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmdManageAccount = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dtGrdAccounts = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdAccounts)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Crimson;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(560, 153);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Tu bude v gride prehľad účtov a klientov, ktorým patria.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -61,46 +49,49 @@
             // 
             // cmdManageAccount
             // 
-            this.cmdManageAccount.Location = new System.Drawing.Point(256, 221);
+            this.cmdManageAccount.Location = new System.Drawing.Point(391, 458);
             this.cmdManageAccount.Name = "cmdManageAccount";
-            this.cmdManageAccount.Size = new System.Drawing.Size(75, 37);
+            this.cmdManageAccount.Size = new System.Drawing.Size(140, 37);
             this.cmdManageAccount.TabIndex = 10;
             this.cmdManageAccount.Text = "Spravovať účet";
             this.cmdManageAccount.UseVisualStyleBackColor = true;
             this.cmdManageAccount.Click += new System.EventHandler(this.cmdManageAccount_Click);
             // 
-            // label4
+            // dtGrdAccounts
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.Indigo;
-            this.label4.Location = new System.Drawing.Point(136, 262);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(317, 91);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "^\r\nButton na menežovanie aktuálne zvoleného účtu v gride";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dtGrdAccounts.AllowUserToAddRows = false;
+            this.dtGrdAccounts.AllowUserToDeleteRows = false;
+            this.dtGrdAccounts.AllowUserToResizeColumns = false;
+            this.dtGrdAccounts.AllowUserToResizeRows = false;
+            this.dtGrdAccounts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtGrdAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdAccounts.Location = new System.Drawing.Point(25, 75);
+            this.dtGrdAccounts.Name = "dtGrdAccounts";
+            this.dtGrdAccounts.RowHeadersVisible = false;
+            this.dtGrdAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGrdAccounts.Size = new System.Drawing.Size(869, 365);
+            this.dtGrdAccounts.TabIndex = 12;
             // 
             // frmAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 352);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(916, 524);
+            this.Controls.Add(this.dtGrdAccounts);
             this.Controls.Add(this.cmdManageAccount);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Name = "frmAccounts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prehľad účtov";
+            this.Load += new System.EventHandler(this.frmAccounts_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdAccounts)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button cmdManageAccount;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dtGrdAccounts;
     }
 }

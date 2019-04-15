@@ -121,5 +121,33 @@ namespace Card.Repositories
                 }
             }
         }
+
+        public DataSet GetAllAccounts()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT A.AccountID AS 'ID', A.IBAN AS 'IBAN', A.AccountName AS 'Názov účtu', A.OpeningDate AS 'Otvorený', 
+                                    A.AccountBalance AS 'Zostatok', A.AuthOverdraftLimit AS 'Limit prečerpania',
+                                    C.ClientID AS 'ID klienta', C.Name AS 'Meno', C.Surname AS 'Priezvisko', C.Title AS 'Titul', C.IdCardNumber AS 'Číslo OP'
+                                    FROM BankAccounts AS A 
+                                    INNER JOIN Clients AS C ON A.ClientID = C.ClientID
+                                    WHERE ClosingDate IS NULL; ";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.Fill(ds, "BankAccounts");
+                }
+                return ds;
+            }
+        }
     }
 }

@@ -409,6 +409,7 @@
             this.dtGrdCards.Name = "dtGrdCards";
             this.dtGrdCards.ReadOnly = true;
             this.dtGrdCards.RowHeadersVisible = false;
+            this.dtGrdCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdCards.Size = new System.Drawing.Size(335, 116);
             this.dtGrdCards.TabIndex = 24;
             // 
