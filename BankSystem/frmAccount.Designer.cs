@@ -183,8 +183,9 @@
             this.lblAccIban.AutoSize = true;
             this.lblAccIban.Location = new System.Drawing.Point(150, 15);
             this.lblAccIban.Name = "lblAccIban";
-            this.lblAccIban.Size = new System.Drawing.Size(0, 13);
+            this.lblAccIban.Size = new System.Drawing.Size(32, 13);
             this.lblAccIban.TabIndex = 1;
+            this.lblAccIban.Text = "IBAN";
             // 
             // pnlCllientData
             // 

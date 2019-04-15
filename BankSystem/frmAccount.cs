@@ -76,7 +76,7 @@ namespace BankSystem
             _clientRepository.Client.Street = txtStreet.Text;
             _clientRepository.Client.City = txtCity.Text;
             _clientRepository.Client.PhoneNumber = txtPhoneNum.Text;
-            _clientRepository.Client.BankAccount.Iban = lblIban.Text;
+            _clientRepository.Client.BankAccount.Iban = lblAccIban.Text;
             _clientRepository.Client.BankAccount.AccountName = txtAccName.Text;
             _clientRepository.Client.BankAccount.AccountBalance =
                 decimal.Parse(lblAccBalance.Text.Substring(0, lblAccBalance.Text.IndexOf(' ')));
