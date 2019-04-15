@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Form for viewing account and client data.
+    /// </summary>
     public partial class frmClientManagement : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();

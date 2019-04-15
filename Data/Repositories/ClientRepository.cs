@@ -11,7 +11,7 @@ using System.Diagnostics;
 namespace Card.Repositories
 {
     /// <summary>
-    /// 
+    /// Repository class for manipulating client data from database.
     /// </summary>
     public class ClientRepository : MainRepository
     {
@@ -190,7 +190,7 @@ namespace Card.Repositories
                 {
                     Debug.WriteLine(e.Message);
                     return -1;
-                }               
+                }
                 string sqlQuery = @"INSERT INTO Clients (Name, Surname, Title, BirthNumber, IdCardNumber, Street, City, PhoneNumber)
                                     OUTPUT INSERTED.ClientID
                                     VALUES (@name, @surname, @title, @birthNumber, @idCard, @street, @city, @phoneNumber);";
@@ -205,7 +205,7 @@ namespace Card.Repositories
                 command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = client.PhoneNumber;
                 try
                 {
-                    return (int) command.ExecuteScalar();
+                    return (int)command.ExecuteScalar();
                 }
                 catch (SqlException e)
                 {
@@ -233,7 +233,15 @@ namespace Card.Repositories
                                     FROM Clients GROUP BY City ORDER BY [Počet klientov] DESC;";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
-                    adapter.Fill(ds, "Cities");
+                    try
+                    {
+                        adapter.Fill(ds, "Cities");
+                    }
+                    catch (SqlException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return ds;
+                    }
                 }
                 return ds;
             }

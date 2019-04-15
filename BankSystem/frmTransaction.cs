@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Form for transactions.
+    /// </summary>
     public partial class frmTransaction : Form
     {
         private int _senderID = 0;

@@ -11,12 +11,18 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Form for viewing list of accounts.
+    /// </summary>
     public partial class frmAccounts : Form
     {
         private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
         private string iban = "";
         private string surname = "";
 
+        /// <summary>
+        /// Constructor without parameters.
+        /// </summary>
         public frmAccounts()
         {
             InitializeComponent();

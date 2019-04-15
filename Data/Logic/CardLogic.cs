@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Card.Logic
 {
+    /// <summary>
+    /// Logic class for CardModel.
+    /// </summary>
     public static class CardLogic
     {
+        /// <summary>
+        /// Generates random 16-digit card number.
+        /// </summary>
+        /// <returns></returns>
         public static string GenerateCardNum()
         {
             Random random = new Random();
@@ -16,6 +23,10 @@ namespace Card.Logic
             return $"{randomCardNum1}{randomCardNum2}";
         }
 
+        /// <summary>
+        /// Generates random 4-digit PIN.
+        /// </summary>
+        /// <returns></returns>
         public static string GeneratePIN()
         {
             Random random = new Random();

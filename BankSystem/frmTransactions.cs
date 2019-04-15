@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Shows all transactions in a table.
+    /// </summary>
     public partial class frmTransactions : Form
     {
         private TransactionRepository _transactionRepository = new TransactionRepository();

@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Form for editing account and client data.
+    /// </summary>
     public partial class frmAccount : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();
@@ -35,8 +38,6 @@ namespace BankSystem
             InitializeComponent();
             _clientId = clientId;
         }
-
-
 
         private void frmAccount_Load(object sender, EventArgs e)
         {

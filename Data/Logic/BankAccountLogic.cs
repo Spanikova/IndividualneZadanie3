@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Card.Logic
 {
+    /// <summary>
+    /// Logic class for BankAccountModel.
+    /// </summary>
     public static class BankAccountLogic
     {
         /// <summary>

@@ -11,10 +11,21 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
+    /// <summary>
+    /// Repository class for manipulating transaction data from database.
+    /// </summary>
     public class TransactionRepository : MainRepository
     {
+        /// <summary>
+        /// Instance of TransactionModel class for storing transaction data.
+        /// </summary>
         public TransactionModel Transaction = new TransactionModel();
 
+        /// <summary>
+        /// Returns Dataset containing all transactions of specified account.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DataSet GetAllTransactionsByAccount(int id)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -55,6 +66,10 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns Dataset containing all transactionst.
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetAllTransactions()
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -91,6 +106,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Inserts new transaction into database.
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public int InsertTransaction(TransactionModel transaction)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

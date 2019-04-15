@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Card.Repositories
 {
+    /// <summary>
+    /// Repository class for manipulating card data from database.
+    /// </summary>
     public class CardRepository : MainRepository
     {
         /// <summary>
@@ -74,12 +77,25 @@ namespace Card.Repositories
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
                     adapter.SelectCommand.Parameters.AddWithValue("@id", accountId);
-                    adapter.Fill(ds, "Cards");
+                    try
+                    {
+                        adapter.Fill(ds, "Cards");
+                    }
+                    catch(SqlException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return ds;
+                    }
+                    
                 }
                 return ds;
             }
         }
 
+        /// <summary>
+        /// Unblocks selected blocked card.
+        /// </summary>
+        /// <param name="cardNumber"></param>
         public void UnblockCard(string cardNumber)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -97,7 +113,6 @@ namespace Card.Repositories
                                     WHERE CardNumber = @cardNum;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@cardNum", SqlDbType.Char).Value = cardNumber;
-
                 try
                 {
                     command.ExecuteNonQuery();
@@ -109,6 +124,12 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Checks if inserted account number and pin combination is valid.
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <param name="pin"></param>
+        /// <returns></returns>
         public bool CheckLogin(string cardNumber, string pin)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -145,6 +166,10 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Blocks selected card.
+        /// </summary>
+        /// <param name="cardNumber"></param>
         public void BlockCard(string cardNumber)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -162,7 +187,6 @@ namespace Card.Repositories
                                     WHERE CardNumber = @cardNum;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@cardNum", SqlDbType.Char).Value = cardNumber;
-
                 try
                 {
                     command.ExecuteNonQuery();
@@ -174,6 +198,11 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns id of account associated with selected card.
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
         public int getAccId(string cardNumber)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

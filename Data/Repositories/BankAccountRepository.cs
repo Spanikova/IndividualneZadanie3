@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 
 namespace Card.Repositories
 {
+    /// <summary>
+    /// Repository class for manipulating transaction data from database.
+    /// </summary>
     public class BankAccountRepository : MainRepository
     {
-
         /// <summary>
         /// Updates bank account info in database.
         /// </summary>
@@ -69,7 +71,8 @@ namespace Card.Repositories
                     Debug.WriteLine(e.Message);
                     return false;
                 }
-                string sqlQuery = @"INSERT INTO BankAccounts (ClientID, AccountName, IBAN, OpeningDate, AccountBalance, AuthOverdraftLimit)
+                string sqlQuery = @"INSERT INTO BankAccounts (ClientID, AccountName, IBAN, OpeningDate, 
+                                    AccountBalance, AuthOverdraftLimit)
                                     VALUES (@clientId, @accName, @iban, GetDate(), @balance, @limit);";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@clientId", SqlDbType.Int).Value = client.ClientID;
@@ -91,7 +94,7 @@ namespace Card.Repositories
         }
 
         /// <summary>
-        /// Sets closing date in database to current date.
+        /// Sets closing date of account in database to current date.
         /// </summary>
         /// <param name="id"></param>
         public void CloseAccount(int id)
@@ -122,6 +125,12 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns dataset of all accounts.
+        /// </summary>
+        /// <param name="iban"></param>
+        /// <param name="surname"></param>
+        /// <returns></returns>
         public DataSet GetAllAccounts(string iban, string surname)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -146,12 +155,25 @@ namespace Card.Repositories
                 {
                     adapter.SelectCommand.Parameters.AddWithValue("@iban", $"%{iban}%");
                     adapter.SelectCommand.Parameters.AddWithValue("@surname", $"%{ surname}%");
-                    adapter.Fill(ds, "BankAccounts");
+                    try
+                    {
+                        adapter.Fill(ds, "BankAccounts");
+                    }
+                    catch (SqlException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return ds;
+                    }
                 }
                 return ds;
             }
         }
 
+        /// <summary>
+        /// Adds money to balance of specified account.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="money"></param>
         public void AddMoney(int id, decimal money)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -181,6 +203,11 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Substracts money from balance of specified account.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="money"></param>
         public void SubstractMoney(int id, decimal money)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -210,6 +237,11 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Chcecks if account with specified id is in database.
+        /// </summary>
+        /// <param name="idToCheck"></param>
+        /// <returns></returns>
         public bool CheckIfIdExists(int idToCheck)
         {
             int id = 0;
@@ -248,6 +280,12 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Check if account has enough money for transaction.
+        /// </summary>
+        /// <param name="idSender"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
         public bool CheckIfEnoughMoney(int idSender, decimal money)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -286,8 +324,11 @@ namespace Card.Repositories
             }
         }
 
-
-
+        /// <summary>
+        /// Returns balance of specified account.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public decimal ShowBalance(int id)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -323,6 +364,10 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns total number of open accounts.
+        /// </summary>
+        /// <returns></returns>
         public int CountOfAccounts()
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -342,7 +387,7 @@ namespace Card.Repositories
                 {
                     if (command.ExecuteScalar() != null)
                     {
-                        return (int) command.ExecuteScalar();
+                        return (int)command.ExecuteScalar();
                     }
                     else
                     {
@@ -357,6 +402,10 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns sum of balances of all open accounts.
+        /// </summary>
+        /// <returns></returns>
         public decimal SumOnAccounts()
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -391,6 +440,10 @@ namespace Card.Repositories
             }
         }
 
+        /// <summary>
+        /// Returns 10 accounts with highest balance.
+        /// </summary>
+        /// <returns></returns>
         public DataSet TopAccounts()
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -409,12 +462,24 @@ namespace Card.Repositories
                                     FROM BankAccounts WHERE ClosingDate IS NULL ORDER BY AccountBalance DESC;";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
-                    adapter.Fill(ds, "BankAccounts");
+                    try
+                    {
+                        adapter.Fill(ds, "BankAccounts");
+                    }
+                    catch (SqlException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return ds;
+                    }
                 }
                 return ds;
             }
         }
 
+        /// <summary>
+        /// Returns number of accounts per month opened in last 6 month.
+        /// </summary>
+        /// <returns></returns>
         public DataSet AccountsByMonth()
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -438,12 +503,20 @@ namespace Card.Repositories
                                     ORDER BY DATEPART(YEAR,OpeningDate) DESC, DATEPART(MONTH,OpeningDate) DESC";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
-                    adapter.Fill(ds, "BankAccounts");
+                    try
+                    {
+                        adapter.Fill(ds, "BankAccounts");
+                    }
+                    catch (SqlException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        return ds;
+                    }
                 }
                 return ds;
             }
         }
 
-        
+
     }
 }

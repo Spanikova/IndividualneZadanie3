@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeleteThisEmptyClass.cs" />
     <Compile Include="Logic\BankAccountLogic.cs" />
     <Compile Include="Logic\CardLogic.cs" />
     <Compile Include="Models\BankAccountModel.cs" />

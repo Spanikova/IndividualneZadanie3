@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace BankSystem
 {
+    /// <summary>
+    /// Main window with manager views and account control.
+    /// </summary>
     public partial class frmMain : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();

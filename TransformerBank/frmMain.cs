@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace TransformerBank
 {
+    /// <summary>
+    /// Main ATM window.
+    /// </summary>
     public partial class frmMain : Form
     {
         private CardRepository _cardRepository = new CardRepository();
@@ -23,6 +26,9 @@ namespace TransformerBank
         private int accId = 0;
         private decimal sum = 0;
 
+        /// <summary>
+        /// Constructor without parameters.
+        /// </summary>
         public frmMain()
         {
             InitializeComponent();
