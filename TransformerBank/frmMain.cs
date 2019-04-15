@@ -16,5 +16,11 @@ namespace TransformerBank
         {
             InitializeComponent();
         }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            string cardNum = txtCardNumber.Text;
+            string pin = txtPin.Text;
+        }
     }
 }
