@@ -9,8 +9,8 @@ namespace Card.Models
     class TransactionModel
     {
         public int TransactionID { get; set; }
-        public int SenderID { get; set; }
-        public int RecipientID { get; set; }
+        public string SenderIban { get; set; }
+        public string RecipientIban { get; set; }
         public DateTime Time { get; set; }
         public string VS { get; set; }
         public string SS { get; set; }

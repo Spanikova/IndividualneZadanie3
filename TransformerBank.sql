@@ -41,7 +41,6 @@ AccountID int FOREIGN KEY REFERENCES BankAccounts (AccountID)
 );
 
 
-
 CREATE TABLE Transactions (
 TransactionID int IDENTITY (1,1) PRIMARY KEY NOT NULL,
 SenderIBAN char (24) NOT NULL,
@@ -50,5 +49,5 @@ Time Datetime NOT NULL,
 VS char(10) NULL,
 SS char(10) NULL,
 KS char(4) NULL,
-TransMessage varchar (20) NULL
+TransMessage nvarchar (20) NULL
 );

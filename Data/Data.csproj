@@ -53,6 +53,7 @@
     <Compile Include="Repositories\CardRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\MainRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Support.csproj">
