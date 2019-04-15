@@ -29,26 +29,28 @@
         private void InitializeComponent()
         {
             this.pnlSender = new System.Windows.Forms.Panel();
+            this.txtSender = new Controls.NumericTextBox();
             this.lblSender = new System.Windows.Forms.Label();
             this.pnlRecipient = new System.Windows.Forms.Panel();
+            this.txtRecipient = new Controls.NumericTextBox();
             this.lblRecipient = new System.Windows.Forms.Label();
             this.pnlTransInfo = new System.Windows.Forms.Panel();
-            this.lblVS = new System.Windows.Forms.Label();
-            this.llbSS = new System.Windows.Forms.Label();
-            this.lblKS = new System.Windows.Forms.Label();
-            this.txtVS = new Controls.NumericTextBox();
-            this.txtSS = new Controls.NumericTextBox();
-            this.txtKS = new Controls.NumericTextBox();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.txtMessage = new System.Windows.Forms.TextBox();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.txtSender = new Controls.NumericTextBox();
-            this.txtRecipient = new Controls.NumericTextBox();
             this.lblInfoText = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.txtKS = new Controls.NumericTextBox();
+            this.txtSS = new Controls.NumericTextBox();
+            this.txtVS = new Controls.NumericTextBox();
+            this.lblKS = new System.Windows.Forms.Label();
+            this.llbSS = new System.Windows.Forms.Label();
+            this.lblVS = new System.Windows.Forms.Label();
             this.pnlSum = new System.Windows.Forms.Panel();
-            this.lblSum = new System.Windows.Forms.Label();
             this.txtSum = new Controls.NumericTextBox();
+            this.lblSum = new System.Windows.Forms.Label();
+            this.lblBank = new System.Windows.Forms.Label();
+            this.lblBank2 = new System.Windows.Forms.Label();
             this.pnlSender.SuspendLayout();
             this.pnlRecipient.SuspendLayout();
             this.pnlTransInfo.SuspendLayout();
@@ -58,12 +60,20 @@
             // pnlSender
             // 
             this.pnlSender.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSender.Controls.Add(this.lblBank);
             this.pnlSender.Controls.Add(this.txtSender);
             this.pnlSender.Controls.Add(this.lblSender);
             this.pnlSender.Location = new System.Drawing.Point(6, 33);
             this.pnlSender.Name = "pnlSender";
             this.pnlSender.Size = new System.Drawing.Size(212, 55);
             this.pnlSender.TabIndex = 8;
+            // 
+            // txtSender
+            // 
+            this.txtSender.Location = new System.Drawing.Point(99, 12);
+            this.txtSender.Name = "txtSender";
+            this.txtSender.Size = new System.Drawing.Size(67, 20);
+            this.txtSender.TabIndex = 1;
             // 
             // lblSender
             // 
@@ -77,12 +87,20 @@
             // pnlRecipient
             // 
             this.pnlRecipient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRecipient.Controls.Add(this.lblBank2);
             this.pnlRecipient.Controls.Add(this.txtRecipient);
             this.pnlRecipient.Controls.Add(this.lblRecipient);
             this.pnlRecipient.Location = new System.Drawing.Point(217, 33);
             this.pnlRecipient.Name = "pnlRecipient";
             this.pnlRecipient.Size = new System.Drawing.Size(207, 55);
             this.pnlRecipient.TabIndex = 9;
+            // 
+            // txtRecipient
+            // 
+            this.txtRecipient.Location = new System.Drawing.Point(92, 12);
+            this.txtRecipient.Name = "txtRecipient";
+            this.txtRecipient.Size = new System.Drawing.Size(60, 20);
+            this.txtRecipient.TabIndex = 1;
             // 
             // lblRecipient
             // 
@@ -112,114 +130,6 @@
             this.pnlTransInfo.Size = new System.Drawing.Size(418, 141);
             this.pnlTransInfo.TabIndex = 10;
             // 
-            // lblVS
-            // 
-            this.lblVS.AutoSize = true;
-            this.lblVS.Location = new System.Drawing.Point(14, 51);
-            this.lblVS.Name = "lblVS";
-            this.lblVS.Size = new System.Drawing.Size(90, 13);
-            this.lblVS.TabIndex = 0;
-            this.lblVS.Text = "Variabilný symbol:";
-            // 
-            // llbSS
-            // 
-            this.llbSS.AutoSize = true;
-            this.llbSS.Location = new System.Drawing.Point(14, 81);
-            this.llbSS.Name = "llbSS";
-            this.llbSS.Size = new System.Drawing.Size(94, 13);
-            this.llbSS.TabIndex = 1;
-            this.llbSS.Text = "Špecifický symbol:";
-            // 
-            // lblKS
-            // 
-            this.lblKS.AutoSize = true;
-            this.lblKS.Location = new System.Drawing.Point(14, 110);
-            this.lblKS.Name = "lblKS";
-            this.lblKS.Size = new System.Drawing.Size(98, 13);
-            this.lblKS.TabIndex = 2;
-            this.lblKS.Text = "Konštantný symbol:";
-            // 
-            // txtVS
-            // 
-            this.txtVS.AllowDecimals = false;
-            this.txtVS.AllowNegative = false;
-            this.txtVS.Location = new System.Drawing.Point(126, 48);
-            this.txtVS.MaxLength = 10;
-            this.txtVS.Name = "txtVS";
-            this.txtVS.Size = new System.Drawing.Size(100, 20);
-            this.txtVS.TabIndex = 3;
-            // 
-            // txtSS
-            // 
-            this.txtSS.AllowDecimals = false;
-            this.txtSS.AllowNegative = false;
-            this.txtSS.Location = new System.Drawing.Point(126, 78);
-            this.txtSS.MaxLength = 10;
-            this.txtSS.Name = "txtSS";
-            this.txtSS.Size = new System.Drawing.Size(100, 20);
-            this.txtSS.TabIndex = 4;
-            // 
-            // txtKS
-            // 
-            this.txtKS.AllowDecimals = false;
-            this.txtKS.AllowNegative = false;
-            this.txtKS.Location = new System.Drawing.Point(126, 107);
-            this.txtKS.MaxLength = 4;
-            this.txtKS.Name = "txtKS";
-            this.txtKS.Size = new System.Drawing.Size(100, 20);
-            this.txtKS.TabIndex = 5;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(14, 14);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(106, 13);
-            this.lblMessage.TabIndex = 6;
-            this.lblMessage.Text = "Správa pre príjemcu:";
-            // 
-            // txtMessage
-            // 
-            this.txtMessage.Location = new System.Drawing.Point(126, 11);
-            this.txtMessage.MaxLength = 20;
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(279, 20);
-            this.txtMessage.TabIndex = 7;
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(252, 100);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(72, 23);
-            this.btnAccept.TabIndex = 8;
-            this.btnAccept.Text = "Potvrď";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(341, 100);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(72, 23);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Zrušiť";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // txtSender
-            // 
-            this.txtSender.Location = new System.Drawing.Point(99, 12);
-            this.txtSender.Name = "txtSender";
-            this.txtSender.Size = new System.Drawing.Size(67, 20);
-            this.txtSender.TabIndex = 1;
-            // 
-            // txtRecipient
-            // 
-            this.txtRecipient.Location = new System.Drawing.Point(92, 12);
-            this.txtRecipient.Name = "txtRecipient";
-            this.txtRecipient.Size = new System.Drawing.Size(60, 20);
-            this.txtRecipient.TabIndex = 1;
-            // 
             // lblInfoText
             // 
             this.lblInfoText.AutoSize = true;
@@ -232,6 +142,100 @@
             this.lblInfoText.Text = "Info text";
             this.lblInfoText.Visible = false;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(341, 100);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(72, 23);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Zrušiť";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Location = new System.Drawing.Point(252, 100);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(72, 23);
+            this.btnAccept.TabIndex = 8;
+            this.btnAccept.Text = "Potvrď";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(126, 11);
+            this.txtMessage.MaxLength = 20;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(279, 20);
+            this.txtMessage.TabIndex = 7;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(14, 14);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(106, 13);
+            this.lblMessage.TabIndex = 6;
+            this.lblMessage.Text = "Správa pre príjemcu:";
+            // 
+            // txtKS
+            // 
+            this.txtKS.AllowDecimals = false;
+            this.txtKS.AllowNegative = false;
+            this.txtKS.Location = new System.Drawing.Point(126, 107);
+            this.txtKS.MaxLength = 4;
+            this.txtKS.Name = "txtKS";
+            this.txtKS.Size = new System.Drawing.Size(100, 20);
+            this.txtKS.TabIndex = 5;
+            // 
+            // txtSS
+            // 
+            this.txtSS.AllowDecimals = false;
+            this.txtSS.AllowNegative = false;
+            this.txtSS.Location = new System.Drawing.Point(126, 78);
+            this.txtSS.MaxLength = 10;
+            this.txtSS.Name = "txtSS";
+            this.txtSS.Size = new System.Drawing.Size(100, 20);
+            this.txtSS.TabIndex = 4;
+            // 
+            // txtVS
+            // 
+            this.txtVS.AllowDecimals = false;
+            this.txtVS.AllowNegative = false;
+            this.txtVS.Location = new System.Drawing.Point(126, 48);
+            this.txtVS.MaxLength = 10;
+            this.txtVS.Name = "txtVS";
+            this.txtVS.Size = new System.Drawing.Size(100, 20);
+            this.txtVS.TabIndex = 3;
+            // 
+            // lblKS
+            // 
+            this.lblKS.AutoSize = true;
+            this.lblKS.Location = new System.Drawing.Point(14, 110);
+            this.lblKS.Name = "lblKS";
+            this.lblKS.Size = new System.Drawing.Size(98, 13);
+            this.lblKS.TabIndex = 2;
+            this.lblKS.Text = "Konštantný symbol:";
+            // 
+            // llbSS
+            // 
+            this.llbSS.AutoSize = true;
+            this.llbSS.Location = new System.Drawing.Point(14, 81);
+            this.llbSS.Name = "llbSS";
+            this.llbSS.Size = new System.Drawing.Size(94, 13);
+            this.llbSS.TabIndex = 1;
+            this.llbSS.Text = "Špecifický symbol:";
+            // 
+            // lblVS
+            // 
+            this.lblVS.AutoSize = true;
+            this.lblVS.Location = new System.Drawing.Point(14, 51);
+            this.lblVS.Name = "lblVS";
+            this.lblVS.Size = new System.Drawing.Size(90, 13);
+            this.lblVS.TabIndex = 0;
+            this.lblVS.Text = "Variabilný symbol:";
+            // 
             // pnlSum
             // 
             this.pnlSum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -242,6 +246,14 @@
             this.pnlSum.Size = new System.Drawing.Size(418, 32);
             this.pnlSum.TabIndex = 11;
             // 
+            // txtSum
+            // 
+            this.txtSum.AllowNegative = false;
+            this.txtSum.Location = new System.Drawing.Point(66, 3);
+            this.txtSum.Name = "txtSum";
+            this.txtSum.Size = new System.Drawing.Size(100, 20);
+            this.txtSum.TabIndex = 1;
+            // 
             // lblSum
             // 
             this.lblSum.AutoSize = true;
@@ -251,13 +263,25 @@
             this.lblSum.TabIndex = 0;
             this.lblSum.Text = "Suma:";
             // 
-            // txtSum
+            // lblBank
             // 
-            this.txtSum.AllowNegative = false;
-            this.txtSum.Location = new System.Drawing.Point(66, 3);
-            this.txtSum.Name = "txtSum";
-            this.txtSum.Size = new System.Drawing.Size(100, 20);
-            this.txtSum.TabIndex = 1;
+            this.lblBank.AutoSize = true;
+            this.lblBank.Location = new System.Drawing.Point(112, 15);
+            this.lblBank.Name = "lblBank";
+            this.lblBank.Size = new System.Drawing.Size(38, 13);
+            this.lblBank.TabIndex = 2;
+            this.lblBank.Text = "Banka";
+            this.lblBank.Visible = false;
+            // 
+            // lblBank2
+            // 
+            this.lblBank2.AutoSize = true;
+            this.lblBank2.Location = new System.Drawing.Point(105, 15);
+            this.lblBank2.Name = "lblBank2";
+            this.lblBank2.Size = new System.Drawing.Size(38, 13);
+            this.lblBank2.TabIndex = 3;
+            this.lblBank2.Text = "Banka";
+            this.lblBank2.Visible = false;
             // 
             // frmTransaction
             // 
@@ -308,5 +332,7 @@
         private System.Windows.Forms.Panel pnlSum;
         private Controls.NumericTextBox txtSum;
         private System.Windows.Forms.Label lblSum;
+        private System.Windows.Forms.Label lblBank;
+        private System.Windows.Forms.Label lblBank2;
     }
 }

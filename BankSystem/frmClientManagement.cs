@@ -47,17 +47,19 @@ namespace BankSystem
 
         private void cmdDeposit_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            using (frmTransaction newForm = new frmTransaction(-99, _clientRepository.Client.ClientID))
             {
                 newForm.ShowDialog();
+                frmClientManagement_Load(sender, e);
             }
         }
 
         private void cmdWithdrawal_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            using (frmTransaction newForm = new frmTransaction(_clientRepository.Client.ClientID, -99))
             {
                 newForm.ShowDialog();
+                frmClientManagement_Load(sender, e);
             }
         }
 
@@ -124,16 +126,18 @@ namespace BankSystem
         private void btnNewCard_Click(object sender, EventArgs e)
         {
             bool cardInserted = _cardRepository.InsertNewCard(_clientRepository.Client.BankAccount.AccountID);
-            dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
-            dtGrdCards.DataMember = "Cards";
-            dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RefreshGridView();
         }
 
         private void btnUnblockCard_Click(object sender, EventArgs e)
         {
             string cardNumber = dtGrdCards.SelectedCells[0].Value.ToString();
             _cardRepository.UnblockCard(cardNumber);
+            RefreshGridView();
+        }
+
+        private void RefreshGridView()
+        {
             dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
             dtGrdCards.DataMember = "Cards";
             dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;

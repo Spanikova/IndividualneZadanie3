@@ -31,8 +31,22 @@ namespace Data.Repositories
                 string sqlQuery = @"INSERT INTO Transactions (SenderID, RecipientID, Amount, Time, VS, KS, SS, TransMessage)
                                     VALUES (@senderID, @recipientID, @value, @time, @VS, @KS, @SS, @message);";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                command.Parameters.Add("@senderID", SqlDbType.Int).Value = transaction.SenderID;
-                command.Parameters.Add("@recipientID", SqlDbType.Int).Value = transaction.RecipientID;
+                if(transaction.SenderID == -99)
+                {
+                    command.Parameters.AddWithValue("@senderID", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.Add("@senderID", SqlDbType.Int).Value = transaction.SenderID;
+                }
+                if(transaction.RecipientID == -99)
+                {
+                    command.Parameters.AddWithValue("@recipientID", DBNull.Value);
+                }
+                else
+                {
+                    command.Parameters.Add("@recipientID", SqlDbType.Int).Value = transaction.RecipientID;
+                }
                 command.Parameters.Add("@value", SqlDbType.Decimal).Value = transaction.Amount;
                 command.Parameters.Add("@time", SqlDbType.DateTime).Value = transaction.Time;
                 if (transaction.VS.Length > 0)
