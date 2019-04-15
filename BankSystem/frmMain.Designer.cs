@@ -65,7 +65,7 @@
             // 
             // cmdFindClient
             // 
-            this.cmdFindClient.Location = new System.Drawing.Point(585, 160);
+            this.cmdFindClient.Location = new System.Drawing.Point(595, 160);
             this.cmdFindClient.Name = "cmdFindClient";
             this.cmdFindClient.Size = new System.Drawing.Size(112, 29);
             this.cmdFindClient.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             // cmdNewAccount
             // 
-            this.cmdNewAccount.Location = new System.Drawing.Point(585, 289);
+            this.cmdNewAccount.Location = new System.Drawing.Point(595, 289);
             this.cmdNewAccount.Name = "cmdNewAccount";
             this.cmdNewAccount.Size = new System.Drawing.Size(112, 23);
             this.cmdNewAccount.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             // cmdAllAccounts
             // 
-            this.cmdAllAccounts.Location = new System.Drawing.Point(585, 336);
+            this.cmdAllAccounts.Location = new System.Drawing.Point(595, 336);
             this.cmdAllAccounts.Name = "cmdAllAccounts";
             this.cmdAllAccounts.Size = new System.Drawing.Size(112, 23);
             this.cmdAllAccounts.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // cmdAllTransactions
             // 
-            this.cmdAllTransactions.Location = new System.Drawing.Point(585, 385);
+            this.cmdAllTransactions.Location = new System.Drawing.Point(595, 385);
             this.cmdAllTransactions.Name = "cmdAllTransactions";
             this.cmdAllTransactions.Size = new System.Drawing.Size(112, 23);
             this.cmdAllTransactions.TabIndex = 5;

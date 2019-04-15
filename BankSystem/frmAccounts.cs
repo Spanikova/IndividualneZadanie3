@@ -14,6 +14,8 @@ namespace BankSystem
     public partial class frmAccounts : Form
     {
         private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
+        private string iban = "";
+        private string surname = "";
 
         public frmAccounts()
         {
@@ -34,16 +36,23 @@ namespace BankSystem
         {
             string iban = txtIban.Text;
             string surname = txtSurname.Text;
-            dtGrdAccounts.DataSource = _bankAccountRepository.GetAllAccounts(iban, surname);
-            dtGrdAccounts.DataMember = "BankAccounts";
-            dtGrdAccounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtGrdAccounts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FillDataGridView();
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            string iban = txtIban.Text;
-            string surname = txtSurname.Text;
+            iban = txtIban.Text;
+            surname = txtSurname.Text;
+            FillDataGridView();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            FillDataGridView();
+        }
+
+        private void FillDataGridView()
+        {
             dtGrdAccounts.DataSource = _bankAccountRepository.GetAllAccounts(iban, surname);
             dtGrdAccounts.DataMember = "BankAccounts";
             dtGrdAccounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
