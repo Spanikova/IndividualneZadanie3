@@ -64,33 +64,37 @@ namespace BankSystem
                 senderHasMoney = _bankAccountRepository.CheckIfEnoughMoney(idSender, sum);
                 if (!senderHasMoney)
                 {
-                    lblInfoText.Text = "Odosielateľ nemá dostatok peňazí";
+                    lblInfoText.Text ="Odosielateľ nemá \ndostatok peňazí";
                     lblInfoText.Visible = true;
                 }
-            }
-            if (!recipientExists)
-            {
-                lblInfoText.Text = "Prijímateľ neexistuje";
-                lblInfoText.Visible = true;
-            }
-            if (senderExists && recipientExists)
-            {
-                _transactionRepository.Transaction.Amount = sum;
-                _transactionRepository.Transaction.SenderID = idSender;
-                _transactionRepository.Transaction.RecipientID = idRecipient;
-                _transactionRepository.Transaction.Time = DateTime.Now;
-                _transactionRepository.Transaction.VS = txtVS.Text;
-                _transactionRepository.Transaction.KS = txtKS.Text;
-                _transactionRepository.Transaction.SS = txtSS.Text;
-                _transactionRepository.Transaction.TransMessage = txtMessage.Text;
-                int a = _transactionRepository.InsertTransaction(_transactionRepository.Transaction);
-                if (a > 0)
+                else
                 {
-                    _bankAccountRepository.SubstractMoney(idSender, _transactionRepository.Transaction.Amount);
-                    _bankAccountRepository.AddMoney(idRecipient, _transactionRepository.Transaction.Amount);
+                    if (!recipientExists)
+                    {
+                        lblInfoText.Text = "Prijímateľ neexistuje";
+                        lblInfoText.Visible = true;
+                    }
+                    if (senderExists && recipientExists)
+                    {
+                        _transactionRepository.Transaction.Amount = sum;
+                        _transactionRepository.Transaction.SenderID = idSender;
+                        _transactionRepository.Transaction.RecipientID = idRecipient;
+                        _transactionRepository.Transaction.Time = DateTime.Now;
+                        _transactionRepository.Transaction.VS = txtVS.Text;
+                        _transactionRepository.Transaction.KS = txtKS.Text;
+                        _transactionRepository.Transaction.SS = txtSS.Text;
+                        _transactionRepository.Transaction.TransMessage = txtMessage.Text;
+                        int a = _transactionRepository.InsertTransaction(_transactionRepository.Transaction);
+                        if (a > 0)
+                        {
+                            _bankAccountRepository.SubstractMoney(idSender, _transactionRepository.Transaction.Amount);
+                            _bankAccountRepository.AddMoney(idRecipient, _transactionRepository.Transaction.Amount);
+                        }
+                        DialogResult = DialogResult.OK;
+                    }
                 }
-                DialogResult = DialogResult.OK;
             }
+
         }
     }
 }
