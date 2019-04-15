@@ -105,20 +105,8 @@ namespace BankSystem
             lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.ToShortDateString()}";
             RefreshGridView();
 
-            //TO DO - timer not working
-            //Timer timer = new Timer();    
-            //timer.Interval = 600 * 1000; // 10 seconds
-            //timer.Tick += new EventHandler(timer_Tick);
-            //timer.Start();
         }
-        //TO DO - timer not working
-        //private void timer_Tick(object sender, EventArgs e)
-        //{
-        //    dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
-        //    dtGrdCards.DataMember = "Cards";
-        //    dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        //    dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        //}
+
 
         private void btnNewCard_Click(object sender, EventArgs e)
         {

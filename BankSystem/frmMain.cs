@@ -14,6 +14,7 @@ namespace BankSystem
     public partial class frmMain : Form
     {
         private ClientRepository _clientRepository = new ClientRepository();
+        private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
 
         public frmMain()
         {
@@ -77,7 +78,12 @@ namespace BankSystem
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            lblMoneySum.Text = $"{_bankAccountRepository.SumOnAccounts().ToString()} €";
+            lblNumAccs.Text = $"{_bankAccountRepository.CountOfAccounts().ToString()}";
+            dtGrdTopAccs.DataSource = _bankAccountRepository.TopAccounts();
+            dtGrdTopAccs.DataMember = "BankAccounts";
+            dtGrdTopAccs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdTopAccs.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

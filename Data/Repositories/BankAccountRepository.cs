@@ -322,5 +322,99 @@ namespace Card.Repositories
                 }
             }
         }
+
+        public int CountOfAccounts()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+                string sqlQuery = @"SELECT COUNT(*) FROM BankAccounts WHERE ClosingDate IS NULL;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                try
+                {
+                    if (command.ExecuteScalar() != null)
+                    {
+                        return (int) command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public decimal SumOnAccounts()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+                string sqlQuery = @"SELECT SUM(AccountBalance) FROM BankAccounts WHERE ClosingDate IS NULL;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                try
+                {
+                    if (command.ExecuteScalar() != null)
+                    {
+                        return (decimal)command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+            }
+        }
+
+        public DataSet TopAccounts()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT TOP 10 IBAN, AccountBalance
+                                    FROM BankAccounts WHERE ClosingDate IS NULL ORDER BY AccountBalance DESC;";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.Fill(ds, "BankAccounts");
+                }
+                return ds;
+            }
+        }
+
+        
     }
 }

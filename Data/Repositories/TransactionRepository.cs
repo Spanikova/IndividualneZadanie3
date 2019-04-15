@@ -32,17 +32,19 @@ namespace Data.Repositories
                 string sqlQuery = @"SELECT 
                                     CASE 
                                     WHEN SenderID IS NULL THEN 'Banka'
+                                    WHEN SenderID = @id THEN 'Tento účet'
                                     ELSE S.IBAN
                                     END AS 'Odosielateľ',
                                     CASE
                                     WHEN RecipientID IS NULL THEN 'Banka'
+                                    WHEN RecipientID = @id THEN 'Tento účet'
                                     ELSE R.IBAN
                                     END AS'Príjemca',
                                     Amount AS 'Suma', Time AS 'Čas', 
                                     VS, SS AS 'ŠS', KS, TransMessage AS 'Správa pre príjemcu'
                                     FROM Transactions AS T
-                                    JOIN BankAccounts AS S ON T.SenderID = S.AccountID
-                                    JOIN BankAccounts AS R ON T.RecipientID = R.AccountID
+                                    LEFT JOIN BankAccounts AS S ON T.SenderID = S.AccountID
+                                    LEFT JOIN BankAccounts AS R ON T.RecipientID = R.AccountID
                                     WHERE SenderID = @id OR RecipientID = @id;";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
@@ -79,8 +81,8 @@ namespace Data.Repositories
                                     Amount AS 'Suma', Time AS 'Čas', 
                                     VS, SS AS 'ŠS', KS, TransMessage AS 'Správa pre príjemcu'
                                     FROM Transactions AS T
-                                    JOIN BankAccounts AS S ON T.SenderID = S.AccountID
-                                    JOIN BankAccounts AS R ON T.RecipientID = R.AccountID;";
+                                    LEFT JOIN BankAccounts AS S ON T.SenderID = S.AccountID
+                                    LEFT JOIN BankAccounts AS R ON T.RecipientID = R.AccountID;";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
                     adapter.Fill(ds, "Transactions");
@@ -105,7 +107,7 @@ namespace Data.Repositories
                 string sqlQuery = @"INSERT INTO Transactions (SenderID, RecipientID, Amount, Time, VS, KS, SS, TransMessage)
                                     VALUES (@senderID, @recipientID, @value, @time, @VS, @KS, @SS, @message);";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
-                if(transaction.SenderID == -99)
+                if (transaction.SenderID == -99)
                 {
                     command.Parameters.AddWithValue("@senderID", DBNull.Value);
                 }
@@ -113,7 +115,7 @@ namespace Data.Repositories
                 {
                     command.Parameters.Add("@senderID", SqlDbType.Int).Value = transaction.SenderID;
                 }
-                if(transaction.RecipientID == -99)
+                if (transaction.RecipientID == -99)
                 {
                     command.Parameters.AddWithValue("@recipientID", DBNull.Value);
                 }
