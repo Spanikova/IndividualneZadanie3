@@ -122,7 +122,7 @@ namespace Card.Repositories
                     Debug.WriteLine(e.Message);
                     return false;
                 }
-                string sqlQuery = @"SELECT CardID FROM Cards WHERE CardNumber = @cardnum AND PIN = @pin;";
+                string sqlQuery = @"SELECT CardID FROM Cards WHERE CardNumber = @cardNum AND PIN = @pin AND IsBlocked = 0;";
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@cardNum", SqlDbType.Char).Value = cardNumber;
                 command.Parameters.Add("@pin", SqlDbType.Char).Value = pin;
@@ -192,7 +192,6 @@ namespace Card.Repositories
                 command.Parameters.Add("@cardNumber", SqlDbType.VarChar).Value = cardNumber;
                 try
                 {
-                    var a = command.ExecuteScalar();
                     if (command.ExecuteScalar() != null)
                     {
                         return (int)command.ExecuteScalar();

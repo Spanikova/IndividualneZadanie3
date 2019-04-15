@@ -41,8 +41,12 @@
             this.btnWithdraw = new System.Windows.Forms.Button();
             this.lblWithdraw = new System.Windows.Forms.Label();
             this.txtWithdrawSum = new Controls.NumericTextBox();
+            this.lblInfoText2 = new System.Windows.Forms.Label();
+            this.pnlNiceDay = new System.Windows.Forms.Panel();
+            this.lblNiceDay = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.pnlATMFunctions.SuspendLayout();
+            this.pnlNiceDay.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCardNumber
@@ -122,6 +126,7 @@
             // 
             // pnlATMFunctions
             // 
+            this.pnlATMFunctions.Controls.Add(this.lblInfoText2);
             this.pnlATMFunctions.Controls.Add(this.txtWithdrawSum);
             this.pnlATMFunctions.Controls.Add(this.lblWithdraw);
             this.pnlATMFunctions.Controls.Add(this.btnWithdraw);
@@ -129,7 +134,7 @@
             this.pnlATMFunctions.Controls.Add(this.btnShowBalance);
             this.pnlATMFunctions.Location = new System.Drawing.Point(22, 103);
             this.pnlATMFunctions.Name = "pnlATMFunctions";
-            this.pnlATMFunctions.Size = new System.Drawing.Size(350, 156);
+            this.pnlATMFunctions.Size = new System.Drawing.Size(350, 221);
             this.pnlATMFunctions.TabIndex = 5;
             this.pnlATMFunctions.Visible = false;
             // 
@@ -166,6 +171,7 @@
             this.btnWithdraw.TabIndex = 2;
             this.btnWithdraw.Text = "Výber hotovosti";
             this.btnWithdraw.UseVisualStyleBackColor = false;
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
             // 
             // lblWithdraw
             // 
@@ -187,6 +193,40 @@
             this.txtWithdrawSum.Size = new System.Drawing.Size(100, 20);
             this.txtWithdrawSum.TabIndex = 4;
             // 
+            // lblInfoText2
+            // 
+            this.lblInfoText2.AutoSize = true;
+            this.lblInfoText2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblInfoText2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblInfoText2.Location = new System.Drawing.Point(61, 169);
+            this.lblInfoText2.Name = "lblInfoText2";
+            this.lblInfoText2.Size = new System.Drawing.Size(76, 20);
+            this.lblInfoText2.TabIndex = 13;
+            this.lblInfoText2.Text = "Info text";
+            this.lblInfoText2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblInfoText2.Visible = false;
+            // 
+            // pnlNiceDay
+            // 
+            this.pnlNiceDay.Controls.Add(this.lblNiceDay);
+            this.pnlNiceDay.Location = new System.Drawing.Point(12, 224);
+            this.pnlNiceDay.Name = "pnlNiceDay";
+            this.pnlNiceDay.Size = new System.Drawing.Size(365, 100);
+            this.pnlNiceDay.TabIndex = 6;
+            this.pnlNiceDay.Visible = false;
+            // 
+            // lblNiceDay
+            // 
+            this.lblNiceDay.AutoSize = true;
+            this.lblNiceDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblNiceDay.ForeColor = System.Drawing.Color.Green;
+            this.lblNiceDay.Location = new System.Drawing.Point(83, 28);
+            this.lblNiceDay.Name = "lblNiceDay";
+            this.lblNiceDay.Size = new System.Drawing.Size(141, 20);
+            this.lblNiceDay.TabIndex = 14;
+            this.lblNiceDay.Text = "Have a nice day.";
+            this.lblNiceDay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +234,7 @@
             this.BackgroundImage = global::TransformerBank.Properties.Resources.bank_islam;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.pnlNiceDay);
             this.Controls.Add(this.pnlATMFunctions);
             this.Controls.Add(this.pnlLogin);
             this.DoubleBuffered = true;
@@ -205,6 +246,8 @@
             this.pnlLogin.PerformLayout();
             this.pnlATMFunctions.ResumeLayout(false);
             this.pnlATMFunctions.PerformLayout();
+            this.pnlNiceDay.ResumeLayout(false);
+            this.pnlNiceDay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -224,6 +267,9 @@
         private Controls.NumericTextBox txtWithdrawSum;
         private System.Windows.Forms.Label lblWithdraw;
         private System.Windows.Forms.Button btnWithdraw;
+        private System.Windows.Forms.Label lblInfoText2;
+        private System.Windows.Forms.Panel pnlNiceDay;
+        private System.Windows.Forms.Label lblNiceDay;
     }
 }
 
