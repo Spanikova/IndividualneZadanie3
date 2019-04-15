@@ -14,8 +14,10 @@ namespace TransformerBank
     public partial class frmMain : Form
     {
         private CardRepository _cardRepository = new CardRepository();
+        private BankAccountRepository _accountRepository = new BankAccountRepository();
         private string _prevCard = "";
         private int _counter = 2;
+        private string cardNum = "";
 
         public frmMain()
         {
@@ -24,12 +26,12 @@ namespace TransformerBank
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            string cardNum = txtCardNumber.Text;
+            cardNum = txtCardNumber.Text;
             string pin = txtPin.Text;
-
             if (_cardRepository.CheckLogin(cardNum, pin))
             {
                 pnlLogin.Visible = false;
+                pnlATMFunctions.Visible = true;
             }
             else
             {
@@ -47,6 +49,13 @@ namespace TransformerBank
                 lblInfoText.Text = $"Príliš veľa pokusov\nKarta je zablokovaná";
                 _cardRepository.BlockCard(cardNum);
             }
+        }
+
+        private void btnShowBalance_Click(object sender, EventArgs e)
+        {
+            int accId = _cardRepository.getAccId(cardNum);
+            lblBalance.Visible = true;
+            lblBalance.Text = $"Stav účtu: { _accountRepository.ShowBalance(accId).ToString()} €";
         }
     }
 }

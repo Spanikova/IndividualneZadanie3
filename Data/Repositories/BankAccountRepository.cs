@@ -285,5 +285,42 @@ namespace Card.Repositories
                 }
             }
         }
+
+
+
+        public decimal ShowBalance(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+                string sqlQuery = @"SELECT AccountBalance FROM BankAccounts WHERE AccountID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                try
+                {
+                    if (command.ExecuteScalar() != null)
+                    {
+                        return (decimal)command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+            }
+        }
     }
 }

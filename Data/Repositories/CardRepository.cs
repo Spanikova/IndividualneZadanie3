@@ -128,7 +128,7 @@ namespace Card.Repositories
                 command.Parameters.Add("@pin", SqlDbType.Char).Value = pin;
                 try
                 {
-                    if(command.ExecuteScalar() != null)
+                    if (command.ExecuteScalar() != null)
                     {
                         return true;
                     }
@@ -172,6 +172,43 @@ namespace Card.Repositories
                     Debug.WriteLine(e.Message);
                 }
             }
+        }
+
+        public int getAccId(string cardNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+                string sqlQuery = @"SELECT AccountID FROM Cards WHERE CardNumber = @cardNumber;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@cardNumber", SqlDbType.VarChar).Value = cardNumber;
+                try
+                {
+                    var a = command.ExecuteScalar();
+                    if (command.ExecuteScalar() != null)
+                    {
+                        return (int)command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return 0;
+                }
+            }
+
         }
     }
 }
