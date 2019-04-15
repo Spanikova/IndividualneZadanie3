@@ -34,7 +34,6 @@
             this.cmdAllTransactions = new System.Windows.Forms.Button();
             this.cmdWithdrawal = new System.Windows.Forms.Button();
             this.cmdDeposit = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlCllientData = new System.Windows.Forms.Panel();
             this.lblClientCity = new System.Windows.Forms.Label();
             this.lblClientPhoneNumber = new System.Windows.Forms.Label();
@@ -62,9 +61,12 @@
             this.lblAccount = new System.Windows.Forms.Label();
             this.pnlControls = new System.Windows.Forms.Panel();
             this.btnNewCard = new System.Windows.Forms.Button();
+            this.dtGrdCards = new System.Windows.Forms.DataGridView();
+            this.btnUnblockCard = new System.Windows.Forms.Button();
             this.pnlCllientData.SuspendLayout();
             this.pnlAccountData.SuspendLayout();
             this.pnlControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdCards)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdUpdate
@@ -126,18 +128,6 @@
             this.cmdDeposit.Text = "Vklad hotovosti";
             this.cmdDeposit.UseVisualStyleBackColor = true;
             this.cmdDeposit.Click += new System.EventHandler(this.cmdDeposit_Click);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.DarkMagenta;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(17, 229);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 107);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlCllientData
             // 
@@ -400,26 +390,51 @@
             // 
             // btnNewCard
             // 
-            this.btnNewCard.Location = new System.Drawing.Point(44, 359);
+            this.btnNewCard.Location = new System.Drawing.Point(31, 375);
             this.btnNewCard.Name = "btnNewCard";
-            this.btnNewCard.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCard.Size = new System.Drawing.Size(143, 23);
             this.btnNewCard.TabIndex = 23;
             this.btnNewCard.Text = "Nová karta";
             this.btnNewCard.UseVisualStyleBackColor = true;
             this.btnNewCard.Click += new System.EventHandler(this.btnNewCard_Click);
+            // 
+            // dtGrdCards
+            // 
+            this.dtGrdCards.AllowUserToAddRows = false;
+            this.dtGrdCards.AllowUserToDeleteRows = false;
+            this.dtGrdCards.AllowUserToResizeColumns = false;
+            this.dtGrdCards.AllowUserToResizeRows = false;
+            this.dtGrdCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdCards.Location = new System.Drawing.Point(17, 248);
+            this.dtGrdCards.Name = "dtGrdCards";
+            this.dtGrdCards.ReadOnly = true;
+            this.dtGrdCards.RowHeadersVisible = false;
+            this.dtGrdCards.Size = new System.Drawing.Size(335, 116);
+            this.dtGrdCards.TabIndex = 24;
+            // 
+            // btnUnblockCard
+            // 
+            this.btnUnblockCard.Location = new System.Drawing.Point(192, 375);
+            this.btnUnblockCard.Name = "btnUnblockCard";
+            this.btnUnblockCard.Size = new System.Drawing.Size(141, 23);
+            this.btnUnblockCard.TabIndex = 25;
+            this.btnUnblockCard.Text = "Odblokovať kartu";
+            this.btnUnblockCard.UseVisualStyleBackColor = true;
+            this.btnUnblockCard.Click += new System.EventHandler(this.btnUnblockCard_Click);
             // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 410);
+            this.Controls.Add(this.btnUnblockCard);
+            this.Controls.Add(this.dtGrdCards);
             this.Controls.Add(this.btnNewCard);
             this.Controls.Add(this.pnlControls);
             this.Controls.Add(this.lblAccount);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.pnlAccountData);
             this.Controls.Add(this.pnlCllientData);
-            this.Controls.Add(this.label2);
             this.Name = "frmClientManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detail klienta";
@@ -429,6 +444,7 @@
             this.pnlAccountData.ResumeLayout(false);
             this.pnlAccountData.PerformLayout();
             this.pnlControls.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdCards)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,7 +457,6 @@
         private System.Windows.Forms.Button cmdAllTransactions;
         private System.Windows.Forms.Button cmdWithdrawal;
         private System.Windows.Forms.Button cmdDeposit;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlCllientData;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblAddress;
@@ -469,5 +484,7 @@
         private System.Windows.Forms.Label lblAccOpenDate;
         private System.Windows.Forms.Label lblOpenDate;
         private System.Windows.Forms.Button btnNewCard;
+        private System.Windows.Forms.DataGridView dtGrdCards;
+        private System.Windows.Forms.Button btnUnblockCard;
     }
 }

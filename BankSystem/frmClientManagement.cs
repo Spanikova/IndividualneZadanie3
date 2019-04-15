@@ -100,11 +100,29 @@ namespace BankSystem
             lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
             lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
             lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.ToShortDateString()}";
+            dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
+            dtGrdCards.DataMember = "Cards";
+            dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnNewCard_Click(object sender, EventArgs e)
         {
             bool cardInserted = _cardRepository.InsertNewCard(_clientRepository.Client.BankAccount.AccountID);
+            dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
+            dtGrdCards.DataMember = "Cards";
+            dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void btnUnblockCard_Click(object sender, EventArgs e)
+        {
+            string cardNumber = dtGrdCards.SelectedCells[0].Value.ToString();
+            _cardRepository.UnblockCard(cardNumber);
+            dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
+            dtGrdCards.DataMember = "Cards";
+            dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }
