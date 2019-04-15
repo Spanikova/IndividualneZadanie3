@@ -15,6 +15,80 @@ namespace Data.Repositories
     {
         public TransactionModel Transaction = new TransactionModel();
 
+        public DataSet GetAllTransactionsByAccount(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT 
+                                    CASE 
+                                    WHEN SenderID IS NULL THEN 'Banka'
+                                    ELSE S.IBAN
+                                    END AS 'Odosielateľ',
+                                    CASE
+                                    WHEN RecipientID IS NULL THEN 'Banka'
+                                    ELSE R.IBAN
+                                    END AS'Príjemca',
+                                    Amount AS 'Suma', Time AS 'Čas', 
+                                    VS, SS AS 'ŠS', KS, TransMessage AS 'Správa pre príjemcu'
+                                    FROM Transactions AS T
+                                    JOIN BankAccounts AS S ON T.SenderID = S.AccountID
+                                    JOIN BankAccounts AS R ON T.RecipientID = R.AccountID
+                                    WHERE SenderID = @id OR RecipientID = @id;";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+                    adapter.Fill(ds, "Transactions");
+                }
+                return ds;
+            }
+        }
+
+        public DataSet GetAllTransactions()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT 
+                                    CASE 
+                                    WHEN SenderID IS NULL THEN 'Banka'
+                                    ELSE S.IBAN
+                                    END AS 'Odosielateľ',
+                                    CASE
+                                    WHEN RecipientID IS NULL THEN 'Banka'
+                                    ELSE R.IBAN
+                                    END AS'Príjemca',
+                                    Amount AS 'Suma', Time AS 'Čas', 
+                                    VS, SS AS 'ŠS', KS, TransMessage AS 'Správa pre príjemcu'
+                                    FROM Transactions AS T
+                                    JOIN BankAccounts AS S ON T.SenderID = S.AccountID
+                                    JOIN BankAccounts AS R ON T.RecipientID = R.AccountID;";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.Fill(ds, "Transactions");
+                }
+                return ds;
+            }
+        }
+
         public int InsertTransaction(TransactionModel transaction)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

@@ -65,7 +65,7 @@ namespace BankSystem
 
         private void cmdAllTransactions_Click(object sender, EventArgs e)
         {
-            using (frmTransactions newForm = new frmTransactions(42))
+            using (frmTransactions newForm = new frmTransactions(_clientId))
             {
                 newForm.ShowDialog();
             }
@@ -103,10 +103,7 @@ namespace BankSystem
             lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
             lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
             lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.ToShortDateString()}";
-            dtGrdCards.DataSource = _cardRepository.GetCardsByAccId(_clientRepository.Client.BankAccount.AccountID);
-            dtGrdCards.DataMember = "Cards";
-            dtGrdCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtGrdCards.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RefreshGridView();
 
             //TO DO - timer not working
             //Timer timer = new Timer();    

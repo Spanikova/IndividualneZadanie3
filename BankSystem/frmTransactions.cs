@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace BankSystem
 {
     public partial class frmTransactions : Form
     {
+        private TransactionRepository _transactionRepository = new TransactionRepository();
+        private int _id = 0;
 
         /// <summary>
         /// Used when viewing all transactions.
@@ -19,6 +22,7 @@ namespace BankSystem
         public frmTransactions()
         {
             InitializeComponent();
+
         }
 
         /// <summary>
@@ -28,6 +32,32 @@ namespace BankSystem
         public frmTransactions(int clientId)
         {
             InitializeComponent();
+            _id = clientId;
+        }
+
+        private void frmTransactions_Load(object sender, EventArgs e)
+        {
+            RefreshGridView();
+        }
+
+        private void RefreshGridView()
+        {
+            if (_id == 0)
+            {
+                dtGrdTransactions.DataSource = _transactionRepository.GetAllTransactions();
+            }
+            else
+            {
+                dtGrdTransactions.DataSource = _transactionRepository.GetAllTransactionsByAccount(_id);
+            }
+            dtGrdTransactions.DataMember = "Transactions";
+            dtGrdTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdTransactions.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshGridView();
         }
     }
 }
