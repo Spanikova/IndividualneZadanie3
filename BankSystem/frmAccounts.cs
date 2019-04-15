@@ -27,11 +27,24 @@ namespace BankSystem
             {
                 newForm.ShowDialog();
             }
+            DialogResult = DialogResult.OK;
         }
 
         private void frmAccounts_Load(object sender, EventArgs e)
         {
-            dtGrdAccounts.DataSource = _bankAccountRepository.GetAllAccounts();
+            string iban = txtIban.Text;
+            string surname = txtSurname.Text;
+            dtGrdAccounts.DataSource = _bankAccountRepository.GetAllAccounts(iban, surname);
+            dtGrdAccounts.DataMember = "BankAccounts";
+            dtGrdAccounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdAccounts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string iban = txtIban.Text;
+            string surname = txtSurname.Text;
+            dtGrdAccounts.DataSource = _bankAccountRepository.GetAllAccounts(iban, surname);
             dtGrdAccounts.DataMember = "BankAccounts";
             dtGrdAccounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtGrdAccounts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

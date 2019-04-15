@@ -28,24 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
             this.cmdManageAccount = new System.Windows.Forms.Button();
             this.dtGrdAccounts = new System.Windows.Forms.DataGridView();
+            this.lblIban = new System.Windows.Forms.Label();
+            this.txtIban = new System.Windows.Forms.TextBox();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdAccounts)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(12, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(560, 56);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Tu bude filter na vyhľadávanie klienta/účtu";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmdManageAccount
             // 
@@ -72,26 +63,79 @@
             this.dtGrdAccounts.Size = new System.Drawing.Size(869, 365);
             this.dtGrdAccounts.TabIndex = 12;
             // 
+            // lblIban
+            // 
+            this.lblIban.AutoSize = true;
+            this.lblIban.Location = new System.Drawing.Point(43, 33);
+            this.lblIban.Name = "lblIban";
+            this.lblIban.Size = new System.Drawing.Size(35, 13);
+            this.lblIban.TabIndex = 13;
+            this.lblIban.Text = "IBAN:";
+            // 
+            // txtIban
+            // 
+            this.txtIban.Location = new System.Drawing.Point(84, 30);
+            this.txtIban.MaxLength = 24;
+            this.txtIban.Name = "txtIban";
+            this.txtIban.Size = new System.Drawing.Size(168, 20);
+            this.txtIban.TabIndex = 14;
+            // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(291, 33);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(58, 13);
+            this.lblSurname.TabIndex = 15;
+            this.lblSurname.Text = "Priezvisko:";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(355, 30);
+            this.txtSurname.MaxLength = 20;
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(132, 20);
+            this.txtSurname.TabIndex = 16;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(531, 30);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnFilter.TabIndex = 17;
+            this.btnFilter.Text = "Filtruj";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
             // frmAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 524);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.txtIban);
+            this.Controls.Add(this.lblIban);
             this.Controls.Add(this.dtGrdAccounts);
             this.Controls.Add(this.cmdManageAccount);
-            this.Controls.Add(this.label3);
             this.Name = "frmAccounts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prehľad účtov";
             this.Load += new System.EventHandler(this.frmAccounts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdAccounts)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button cmdManageAccount;
         private System.Windows.Forms.DataGridView dtGrdAccounts;
+        private System.Windows.Forms.Label lblIban;
+        private System.Windows.Forms.TextBox txtIban;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Button btnFilter;
     }
 }

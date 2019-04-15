@@ -69,7 +69,7 @@ namespace Card.Repositories
                     Debug.WriteLine(e.Message);
                     return ds;
                 }
-                string sqlQuery = @"SELECT CardNumber, ExpDate, IsBlocked, PIN
+                string sqlQuery = @"SELECT CardNumber AS 'Číslo', ExpDate AS 'Expirácia', IsBlocked AS 'Zablokovaná', PIN
                                     FROM Cards WHERE AccountID = @id;";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {

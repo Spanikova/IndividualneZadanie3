@@ -122,7 +122,7 @@ namespace Card.Repositories
             }
         }
 
-        public DataSet GetAllAccounts()
+        public DataSet GetAllAccounts(string iban, string surname)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -141,9 +141,11 @@ namespace Card.Repositories
                                     C.ClientID AS 'ID klienta', C.Name AS 'Meno', C.Surname AS 'Priezvisko', C.Title AS 'Titul', C.IdCardNumber AS 'Číslo OP'
                                     FROM BankAccounts AS A 
                                     INNER JOIN Clients AS C ON A.ClientID = C.ClientID
-                                    WHERE ClosingDate IS NULL; ";
+                                    WHERE A.IBAN LIKE @iban AND C.Surname LIKE @surname AND ClosingDate IS NULL; ";
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
                 {
+                    adapter.SelectCommand.Parameters.AddWithValue("@iban", $"%{iban}%");
+                    adapter.SelectCommand.Parameters.AddWithValue("@surname", $"%{ surname}%");
                     adapter.Fill(ds, "BankAccounts");
                 }
                 return ds;
