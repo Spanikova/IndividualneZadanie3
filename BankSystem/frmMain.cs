@@ -1,4 +1,4 @@
-﻿using Data.Repositories;
+﻿using Card.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

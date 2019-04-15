@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Repositories
+namespace Card.Repositories
 {
     public class MainRepository
     {

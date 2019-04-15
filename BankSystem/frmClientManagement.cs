@@ -1,4 +1,4 @@
-﻿using Data.Repositories;
+﻿using Card.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +15,7 @@ namespace BankSystem
     {
         private ClientRepository _clientRepository = new ClientRepository();
         private BankAccountRepository _bankAccountRepository = new BankAccountRepository();
+        private CardRepository _cardRepository = new CardRepository();
         private int _clientId = 0;
 
         /// <summary>
@@ -99,6 +100,11 @@ namespace BankSystem
             lblAccBalance.Text = $"{_clientRepository.Client.BankAccount.AccountBalance} €";
             lblAccLimit.Text = $"{_clientRepository.Client.BankAccount.AuthOverdraftLimit} €";
             lblAccOpenDate.Text = $"{_clientRepository.Client.BankAccount.OpeningDate.ToShortDateString()}";
+        }
+
+        private void btnNewCard_Click(object sender, EventArgs e)
+        {
+            bool cardInserted = _cardRepository.InsertNewCard(_clientRepository.Client.BankAccount.AccountID);
         }
     }
 }

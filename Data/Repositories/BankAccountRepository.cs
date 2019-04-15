@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using Card.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Repositories
+namespace Card.Repositories
 {
     public class BankAccountRepository : MainRepository
     {
@@ -51,6 +51,11 @@ namespace Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Inserts new bank account into database.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public bool InsertBankAccount(ClientModel client)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

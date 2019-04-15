@@ -1,5 +1,5 @@
-﻿using Data.Logic;
-using Data.Repositories;
+﻿using Card.Logic;
+using Card.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

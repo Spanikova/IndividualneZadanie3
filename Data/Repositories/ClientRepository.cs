@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using Card.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace Data.Repositories
+namespace Card.Repositories
 {
     /// <summary>
     /// 

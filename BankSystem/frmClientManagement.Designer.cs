@@ -36,6 +36,7 @@
             this.cmdDeposit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlCllientData = new System.Windows.Forms.Panel();
+            this.lblClientCity = new System.Windows.Forms.Label();
             this.lblClientPhoneNumber = new System.Windows.Forms.Label();
             this.lblPhoneNum = new System.Windows.Forms.Label();
             this.lblClientIdCard = new System.Windows.Forms.Label();
@@ -47,20 +48,20 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pnlAccountData = new System.Windows.Forms.Panel();
-            this.lblIban = new System.Windows.Forms.Label();
-            this.lblAccIban = new System.Windows.Forms.Label();
-            this.lblAName = new System.Windows.Forms.Label();
-            this.lblAccName = new System.Windows.Forms.Label();
-            this.lblBalance = new System.Windows.Forms.Label();
-            this.lblAccBalance = new System.Windows.Forms.Label();
-            this.lblLimit = new System.Windows.Forms.Label();
+            this.lblAccOpenDate = new System.Windows.Forms.Label();
+            this.lblOpenDate = new System.Windows.Forms.Label();
             this.lblAccLimit = new System.Windows.Forms.Label();
+            this.lblLimit = new System.Windows.Forms.Label();
+            this.lblAccBalance = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.lblAccName = new System.Windows.Forms.Label();
+            this.lblAName = new System.Windows.Forms.Label();
+            this.lblAccIban = new System.Windows.Forms.Label();
+            this.lblIban = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
             this.lblAccount = new System.Windows.Forms.Label();
-            this.lblClientCity = new System.Windows.Forms.Label();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.lblOpenDate = new System.Windows.Forms.Label();
-            this.lblAccOpenDate = new System.Windows.Forms.Label();
+            this.btnNewCard = new System.Windows.Forms.Button();
             this.pnlCllientData.SuspendLayout();
             this.pnlAccountData.SuspendLayout();
             this.pnlControls.SuspendLayout();
@@ -133,7 +134,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(17, 229);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(335, 169);
+            this.label2.Size = new System.Drawing.Size(335, 107);
             this.label2.TabIndex = 11;
             this.label2.Text = "Niekde v tomto okne bude grid s platobnými kartami priradenými k účtu.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,6 +158,15 @@
             this.pnlCllientData.Name = "pnlCllientData";
             this.pnlCllientData.Size = new System.Drawing.Size(305, 183);
             this.pnlCllientData.TabIndex = 18;
+            // 
+            // lblClientCity
+            // 
+            this.lblClientCity.AutoSize = true;
+            this.lblClientCity.Location = new System.Drawing.Point(104, 121);
+            this.lblClientCity.Name = "lblClientCity";
+            this.lblClientCity.Size = new System.Drawing.Size(24, 13);
+            this.lblClientCity.TabIndex = 10;
+            this.lblClientCity.Text = "City";
             // 
             // lblClientPhoneNumber
             // 
@@ -267,59 +277,32 @@
             this.pnlAccountData.Size = new System.Drawing.Size(335, 183);
             this.pnlAccountData.TabIndex = 19;
             // 
-            // lblIban
+            // lblAccOpenDate
             // 
-            this.lblIban.AutoSize = true;
-            this.lblIban.Location = new System.Drawing.Point(22, 15);
-            this.lblIban.Name = "lblIban";
-            this.lblIban.Size = new System.Drawing.Size(38, 13);
-            this.lblIban.TabIndex = 0;
-            this.lblIban.Text = "IBAN: ";
+            this.lblAccOpenDate.AutoSize = true;
+            this.lblAccOpenDate.Location = new System.Drawing.Point(150, 121);
+            this.lblAccOpenDate.Name = "lblAccOpenDate";
+            this.lblAccOpenDate.Size = new System.Drawing.Size(85, 13);
+            this.lblAccOpenDate.TabIndex = 9;
+            this.lblAccOpenDate.Text = "Dátum založenia";
             // 
-            // lblAccIban
+            // lblOpenDate
             // 
-            this.lblAccIban.AutoSize = true;
-            this.lblAccIban.Location = new System.Drawing.Point(150, 15);
-            this.lblAccIban.Name = "lblAccIban";
-            this.lblAccIban.Size = new System.Drawing.Size(32, 13);
-            this.lblAccIban.TabIndex = 1;
-            this.lblAccIban.Text = "IBAN";
+            this.lblOpenDate.AutoSize = true;
+            this.lblOpenDate.Location = new System.Drawing.Point(22, 121);
+            this.lblOpenDate.Name = "lblOpenDate";
+            this.lblOpenDate.Size = new System.Drawing.Size(88, 13);
+            this.lblOpenDate.TabIndex = 8;
+            this.lblOpenDate.Text = "Dátum založenia:";
             // 
-            // lblAName
+            // lblAccLimit
             // 
-            this.lblAName.AutoSize = true;
-            this.lblAName.Location = new System.Drawing.Point(22, 41);
-            this.lblAName.Name = "lblAName";
-            this.lblAName.Size = new System.Drawing.Size(65, 13);
-            this.lblAName.TabIndex = 2;
-            this.lblAName.Text = "Názov účtu:";
-            // 
-            // lblAccName
-            // 
-            this.lblAccName.AutoSize = true;
-            this.lblAccName.Location = new System.Drawing.Point(150, 41);
-            this.lblAccName.Name = "lblAccName";
-            this.lblAccName.Size = new System.Drawing.Size(76, 13);
-            this.lblAccName.TabIndex = 3;
-            this.lblAccName.Text = "Account name";
-            // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(22, 69);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(91, 13);
-            this.lblBalance.TabIndex = 4;
-            this.lblBalance.Text = "Zostatok na účte:";
-            // 
-            // lblAccBalance
-            // 
-            this.lblAccBalance.AutoSize = true;
-            this.lblAccBalance.Location = new System.Drawing.Point(150, 69);
-            this.lblAccBalance.Name = "lblAccBalance";
-            this.lblAccBalance.Size = new System.Drawing.Size(46, 13);
-            this.lblAccBalance.TabIndex = 5;
-            this.lblAccBalance.Text = "Balance";
+            this.lblAccLimit.AutoSize = true;
+            this.lblAccLimit.Location = new System.Drawing.Point(150, 95);
+            this.lblAccLimit.Name = "lblAccLimit";
+            this.lblAccLimit.Size = new System.Drawing.Size(28, 13);
+            this.lblAccLimit.TabIndex = 7;
+            this.lblAccLimit.Text = "Limit";
             // 
             // lblLimit
             // 
@@ -330,14 +313,59 @@
             this.lblLimit.TabIndex = 6;
             this.lblLimit.Text = "Povolené prečerpanie:";
             // 
-            // lblAccLimit
+            // lblAccBalance
             // 
-            this.lblAccLimit.AutoSize = true;
-            this.lblAccLimit.Location = new System.Drawing.Point(150, 95);
-            this.lblAccLimit.Name = "lblAccLimit";
-            this.lblAccLimit.Size = new System.Drawing.Size(28, 13);
-            this.lblAccLimit.TabIndex = 7;
-            this.lblAccLimit.Text = "Limit";
+            this.lblAccBalance.AutoSize = true;
+            this.lblAccBalance.Location = new System.Drawing.Point(150, 69);
+            this.lblAccBalance.Name = "lblAccBalance";
+            this.lblAccBalance.Size = new System.Drawing.Size(46, 13);
+            this.lblAccBalance.TabIndex = 5;
+            this.lblAccBalance.Text = "Balance";
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(22, 69);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(91, 13);
+            this.lblBalance.TabIndex = 4;
+            this.lblBalance.Text = "Zostatok na účte:";
+            // 
+            // lblAccName
+            // 
+            this.lblAccName.AutoSize = true;
+            this.lblAccName.Location = new System.Drawing.Point(150, 41);
+            this.lblAccName.Name = "lblAccName";
+            this.lblAccName.Size = new System.Drawing.Size(76, 13);
+            this.lblAccName.TabIndex = 3;
+            this.lblAccName.Text = "Account name";
+            // 
+            // lblAName
+            // 
+            this.lblAName.AutoSize = true;
+            this.lblAName.Location = new System.Drawing.Point(22, 41);
+            this.lblAName.Name = "lblAName";
+            this.lblAName.Size = new System.Drawing.Size(65, 13);
+            this.lblAName.TabIndex = 2;
+            this.lblAName.Text = "Názov účtu:";
+            // 
+            // lblAccIban
+            // 
+            this.lblAccIban.AutoSize = true;
+            this.lblAccIban.Location = new System.Drawing.Point(150, 15);
+            this.lblAccIban.Name = "lblAccIban";
+            this.lblAccIban.Size = new System.Drawing.Size(32, 13);
+            this.lblAccIban.TabIndex = 1;
+            this.lblAccIban.Text = "IBAN";
+            // 
+            // lblIban
+            // 
+            this.lblIban.AutoSize = true;
+            this.lblIban.Location = new System.Drawing.Point(22, 15);
+            this.lblIban.Name = "lblIban";
+            this.lblIban.Size = new System.Drawing.Size(38, 13);
+            this.lblIban.TabIndex = 0;
+            this.lblIban.Text = "IBAN: ";
             // 
             // lblClient
             // 
@@ -357,15 +385,6 @@
             this.lblAccount.TabIndex = 21;
             this.lblAccount.Text = "Základné informácie o účte";
             // 
-            // lblClientCity
-            // 
-            this.lblClientCity.AutoSize = true;
-            this.lblClientCity.Location = new System.Drawing.Point(104, 121);
-            this.lblClientCity.Name = "lblClientCity";
-            this.lblClientCity.Size = new System.Drawing.Size(24, 13);
-            this.lblClientCity.TabIndex = 10;
-            this.lblClientCity.Text = "City";
-            // 
             // pnlControls
             // 
             this.pnlControls.Controls.Add(this.cmdNewTransaction);
@@ -379,29 +398,22 @@
             this.pnlControls.Size = new System.Drawing.Size(305, 169);
             this.pnlControls.TabIndex = 22;
             // 
-            // lblOpenDate
+            // btnNewCard
             // 
-            this.lblOpenDate.AutoSize = true;
-            this.lblOpenDate.Location = new System.Drawing.Point(22, 121);
-            this.lblOpenDate.Name = "lblOpenDate";
-            this.lblOpenDate.Size = new System.Drawing.Size(88, 13);
-            this.lblOpenDate.TabIndex = 8;
-            this.lblOpenDate.Text = "Dátum založenia:";
-            // 
-            // lblAccOpenDate
-            // 
-            this.lblAccOpenDate.AutoSize = true;
-            this.lblAccOpenDate.Location = new System.Drawing.Point(150, 121);
-            this.lblAccOpenDate.Name = "lblAccOpenDate";
-            this.lblAccOpenDate.Size = new System.Drawing.Size(85, 13);
-            this.lblAccOpenDate.TabIndex = 9;
-            this.lblAccOpenDate.Text = "Dátum založenia";
+            this.btnNewCard.Location = new System.Drawing.Point(44, 359);
+            this.btnNewCard.Name = "btnNewCard";
+            this.btnNewCard.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCard.TabIndex = 23;
+            this.btnNewCard.Text = "Nová karta";
+            this.btnNewCard.UseVisualStyleBackColor = true;
+            this.btnNewCard.Click += new System.EventHandler(this.btnNewCard_Click);
             // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 410);
+            this.Controls.Add(this.btnNewCard);
             this.Controls.Add(this.pnlControls);
             this.Controls.Add(this.lblAccount);
             this.Controls.Add(this.lblClient);
@@ -456,5 +468,6 @@
         private System.Windows.Forms.Panel pnlControls;
         private System.Windows.Forms.Label lblAccOpenDate;
         private System.Windows.Forms.Label lblOpenDate;
+        private System.Windows.Forms.Button btnNewCard;
     }
 }
