@@ -71,9 +71,10 @@ namespace BankSystem
 
         private void cmdNewTransaction_Click(object sender, EventArgs e)
         {
-            using (frmTransaction newForm = new frmTransaction())
+            using (frmTransaction newForm = new frmTransaction(_clientRepository.Client.ClientID, 0))
             {
                 newForm.ShowDialog();
+                frmClientManagement_Load(sender, e);
             }
         }
 

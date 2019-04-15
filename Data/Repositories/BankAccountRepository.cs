@@ -74,7 +74,7 @@ namespace Card.Repositories
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 command.Parameters.Add("@clientId", SqlDbType.Int).Value = client.ClientID;
                 command.Parameters.Add("@accName", SqlDbType.NVarChar).Value = client.BankAccount.AccountName;
-                command.Parameters.Add("@iban", SqlDbType.NVarChar).Value = client.BankAccount.Iban;    
+                command.Parameters.Add("@iban", SqlDbType.NVarChar).Value = client.BankAccount.Iban;
                 command.Parameters.Add("@balance", SqlDbType.Decimal).Value = client.BankAccount.AccountBalance;
                 command.Parameters.Add("@limit", SqlDbType.Decimal).Value = client.BankAccount.AuthOverdraftLimit;
                 try
@@ -149,6 +149,140 @@ namespace Card.Repositories
                     adapter.Fill(ds, "BankAccounts");
                 }
                 return ds;
+            }
+        }
+
+        public void AddMoney(int id, decimal money)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                string sqlQuery = @"UPDATE BankAccounts 
+                                    SET AccountBalance = (AccountBalance + @money)
+                                    WHERE AccountID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@money", SqlDbType.Decimal).Value = money;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
+        }
+
+        public void SubstractMoney(int id, decimal money)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                string sqlQuery = @"UPDATE BankAccounts 
+                                    SET AccountBalance = (AccountBalance - @money)
+                                    WHERE AccountID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@money", SqlDbType.Decimal).Value = money;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
+        }
+
+        public bool CheckIfIdExists(int idToCheck)
+        {
+            int id = 0;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                string sqlQuery = @"SELECT AccountID FROM BankAccounts WHERE AccountID = @id AND ClosingDate IS NULL;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = idToCheck;
+                try
+                {
+                    if (command.ExecuteScalar() != null)
+                    {
+                        id = (int)command.ExecuteScalar();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                if (id > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool CheckIfEnoughMoney(int idSender, decimal money)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                decimal limit = 0;
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                string sqlQuery = @"SELECT (AccountBalance + AuthOverdraftLimit) FROM BankAccounts WHERE AccountID = @id;";
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = idSender;
+                try
+                {
+                    if (command.ExecuteScalar() != null)
+                    {
+                        limit = (decimal)command.ExecuteScalar();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+                if (limit > money)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }
