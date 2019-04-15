@@ -39,10 +39,12 @@ namespace TransformerBank
                 {
                     pnlLogin.Visible = false;
                     pnlATMFunctions.Visible = true;
+                    lblInfoText.Visible = false;
                 }
                 else
                 {
                     lblInfoText.Text = $"Neexistujúci účet";
+                    lblInfoText.Visible = true;
                 }
             }
             else
@@ -59,6 +61,7 @@ namespace TransformerBank
             if (_counter <= 0)
             {
                 lblInfoText.Text = $"Príliš veľa pokusov\nKarta je zablokovaná";
+                lblInfoText.Visible = true;
                 _cardRepository.BlockCard(cardNum);
             }
         }
@@ -104,6 +107,10 @@ namespace TransformerBank
             }
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

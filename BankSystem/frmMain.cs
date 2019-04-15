@@ -84,6 +84,14 @@ namespace BankSystem
             dtGrdTopAccs.DataMember = "BankAccounts";
             dtGrdTopAccs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtGrdTopAccs.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dtGrdTopCities.DataSource = _clientRepository.TopCities();
+            dtGrdTopCities.DataMember = "Cities";
+            dtGrdTopCities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdTopCities.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dtGrdAccPerMonth.DataSource = _bankAccountRepository.AccountsByMonth();
+            dtGrdAccPerMonth.DataMember = "BankAccounts";
+            dtGrdAccPerMonth.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtGrdAccPerMonth.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

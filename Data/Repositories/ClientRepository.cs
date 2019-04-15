@@ -215,7 +215,29 @@ namespace Card.Repositories
             }
         }
 
-
+        public DataSet TopCities()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT TOP 5 City AS 'Mesto', COUNT(*) AS 'Počet klientov'
+                                    FROM Clients GROUP BY City ORDER BY [Počet klientov] DESC;";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.Fill(ds, "Cities");
+                }
+                return ds;
+            }
+        }
 
 
     }

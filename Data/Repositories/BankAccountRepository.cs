@@ -415,6 +415,35 @@ namespace Card.Repositories
             }
         }
 
+        public DataSet AccountsByMonth()
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException e)
+                {
+                    Debug.WriteLine(e.Message);
+                    return ds;
+                }
+                string sqlQuery = @"SELECT CONVERT(nvarchar, DATEPART(MONTH,OpeningDate))+'/'+
+                                        CONVERT(nvarchar, DATEPART(YEAR,OpeningDate)) AS 'Mesiac',
+                                    COUNT (IBAN) AS 'Počet účtov'
+                                    FROM BankAccounts
+                                    WHERE DATEDIFF(MONTH,OpeningDate,GETDATE()) < 6
+                                    GROUP BY DATEPART(YEAR,OpeningDate), DATEPART(MONTH,OpeningDate)
+                                    ORDER BY DATEPART(YEAR,OpeningDate) DESC, DATEPART(MONTH,OpeningDate) DESC";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connection))
+                {
+                    adapter.Fill(ds, "BankAccounts");
+                }
+                return ds;
+            }
+        }
+
         
     }
 }
